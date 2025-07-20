@@ -20,16 +20,12 @@ function includeNavbar() {
                   -->           
                 </ul>
               </li>
-              <!--
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Unrelated
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/unrelated/mox.html">Mox' Hobby Page</a></li>
+                  <li><a class="dropdown-item" href="/lists/sacks.html">Sacks</a></li>
                 </ul>
               </li>
-              -->
             </ul>
           </div>
         </div>

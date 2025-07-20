@@ -1,0 +1,9 @@
+.container {
+    background-color: rgb(51, 51, 51);
+    padding-bottom: 1rem;
+    color: rgb(255, 255, 255);
+}
+
+body {
+    background-color: black;
+}
