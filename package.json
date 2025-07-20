@@ -1,0 +1,19 @@
+{
+  "name": "hsb-tools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElohimHOMM/HSB-tools.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ElohimHOMM/HSB-tools/issues"
+  },
+  "homepage": "https://elohimhomm.github.io/index.html",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.0"
+  }
+}
