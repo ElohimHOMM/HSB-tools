@@ -9,7 +9,7 @@ function includeNavbar() {
                   Calculators
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/HSB-tools/calculators/magicfind.html">Magic Find</a></li>
+                  <li><a class="dropdown-item" href="/calculators/magicfind.html">Magic Find</a></li>
                   <!--
                   <li><a class="dropdown-item" href="/2015/day02.html">Day 02</a></li>
                   <li><a class="dropdown-item" href="/2015/day03.html">Day 03</a></li>
@@ -23,7 +23,7 @@ function includeNavbar() {
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/HSB-tools/lists/sacks.html">Sacks</a></li>
+                  <li><a class="dropdown-item" href="/lists/sacks.html">Sacks</a></li>
                 </ul>
               </li>
             </ul>
