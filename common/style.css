@@ -1,11 +1,17 @@
 .container {
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(51, 51, 51, 0.6);
     padding-bottom: 1rem;
     color: rgb(255, 255, 255);
+    backdrop-filter: url(common-filters.svg#filter) blur(8px);
+    margin-top: 2rem;
+    padding-top: 2rem;
 }
 
 body {
-    background-color: black;
+    background-image: url('./img/the_barn.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
 }
 
 footer {

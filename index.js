@@ -2,6 +2,10 @@ $(function() {
     includeNavbar();
     includeFooter();
     
+    $('#modal-pathnotes-010').on('shown.bs.modal', function () {
+      $('#modal-pathnotes-010-button').trigger('focus')
+    });
+    
     $("#start-button").click(function() {
         let baseDropChance = $("#input-bdc").val();
         let magicFind = $("#input-mf").val();
