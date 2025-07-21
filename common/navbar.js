@@ -46,7 +46,7 @@ function includeFooter() {
                 <a href="#" class="px-2">About</a>
             </li>
             <li>
-                <a href="https://discord.gg/EC3bpJEdet" class="px-2">Discord</a>
+                <a href="https://discord.gg/EC3bpJEdet" target="_blank" rel="noopener noreferrer" class="px-2">Discord</a>
             </li>
         </ul> 
         <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
