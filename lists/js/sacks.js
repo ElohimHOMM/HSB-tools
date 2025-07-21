@@ -79,6 +79,7 @@ function buildEmpty() {
 
 $(function() {
     includeNavbar();
+    includeFooter();
 
     let itemJson = readItems();
     let filteredItems = itemJson.filter((item) => item.id.includes("SACK") && item.material !== 'INK_SACK' && item.tier !== 'SPECIAL');

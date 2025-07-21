@@ -35,3 +35,19 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
+function includeFooter() {
+  $("#footer-container").html(
+    `<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li>
+                <a href="#" class="px-2">Top of Page</a>
+            </li>
+            <li>
+                <a href="#" class="px-2">About</a>
+            </li>
+            <li>
+                <a href="https://discord.gg/EC3bpJEdet" class="px-2">Discord</a>
+            </li>
+        </ul> 
+        <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
+}
