@@ -1,5 +1,8 @@
 RewriteEngine On
 
+# === 0. Rewrite root URL (/) to /src/index.html ===
+RewriteRule ^$ /src/index.html [L]
+
 # === 1. Handle real files and folders ===
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
