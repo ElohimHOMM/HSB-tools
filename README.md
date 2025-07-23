@@ -1,4 +1,6 @@
 # Hypixel Skyblock Tools
+Website: http://skyblock-tools.com
+Currently I only have a self signed Certificate, this will be resolved soon.
 
 ## Current Features:
  - Magic Find Calculator
