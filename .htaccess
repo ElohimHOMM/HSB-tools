@@ -1,11 +1,10 @@
 RewriteEngine On
 
-# Remove .html extension (internally)
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [L]
+# === 1. Handle real files and folders ===
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Internally rewrite to /src/ path
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# === 2. Internally rewrite clean URLs to /src/*.html ===
 RewriteCond %{DOCUMENT_ROOT}/src/$1.html -f
-RewriteRule ^(.*)$ /src/$1.html [L]
+RewriteRule ^(.+)$ /src/$1.html [L]
