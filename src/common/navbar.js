@@ -1,7 +1,7 @@
 function includeNavbar() {
-  $("#navbar-container").html(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  $("#navbar-container").html(`<nav id="navbar-top" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/index.html">HSB Tools</a>
+          <a class="navbar-brand" href="/">HSB Tools</a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item dropdown">
@@ -9,21 +9,13 @@ function includeNavbar() {
                   Calculators
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/calculators/magicfind.html">Magic Find</a></li>
-                  <!--
-                  <li><a class="dropdown-item" href="/2015/day02.html">Day 02</a></li>
-                  <li><a class="dropdown-item" href="/2015/day03.html">Day 03</a></li>
-                  <li><a class="dropdown-item" href="/2015/day04.html">Day 04</a></li>
-                  <li><a class="dropdown-item" href="/2015/day05.html">Day 05</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Day 11</a></li>
-                  -->           
+                  <li><a class="dropdown-item" href="/calculators/magicfind">Magic Find</a></li>        
                 </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/lists/sacks.html">Sacks</a></li>
+                  <li><a class="dropdown-item" href="/lists/sacks">Sacks</a></li>
                 </ul>
               </li>
             </ul>
@@ -47,6 +39,9 @@ function includeFooter() {
             </li>
             <li>
                 <a href="https://discord.gg/EC3bpJEdet" target="_blank" rel="noopener noreferrer" class="px-2">Discord</a>
+            </li>
+            <li>
+                <a href="mailto:support@skyblock-tools.com" target="_blank" rel="noopener noreferrer" class="px-2">Contact</a>
             </li>
         </ul> 
         <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);

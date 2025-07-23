@@ -3,7 +3,7 @@ $(function() {
     includeFooter();
     
     $('#modal-pathnotes-010').on('shown.bs.modal', function () {
-      $('#modal-pathnotes-010-button').trigger('focus')
+      $('#modal-pathnotes-010-button').focus();
     });
     
     $("#start-button").click(function() {

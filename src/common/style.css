@@ -3,7 +3,7 @@
     padding-bottom: 1rem;
     color: rgb(255, 255, 255);
     backdrop-filter: url(common-filters.svg#filter) blur(8px);
-    margin-top: 2rem;
+    /* margin-top: 2rem;*/
     padding-top: 2rem;
 }
 
@@ -12,6 +12,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-size: 100% 100%;
+    display: initial;
 }
 
 footer {
