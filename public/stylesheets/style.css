@@ -1,0 +1,25 @@
+.container {
+  background-color: rgb(51, 51, 51, 0.6);
+  padding-bottom: 1rem;
+  color: rgb(255, 255, 255);
+  backdrop-filter: blur(8px);
+  padding-top: 2rem;
+}
+
+body {
+  background-image: url('../images/the_barn.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+  display: initial;
+}
+
+footer {
+  background-color: rgb(33, 37, 41);
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

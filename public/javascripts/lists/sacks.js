@@ -36,16 +36,6 @@ function buildMultiSizeTableRow(map, table) {
         } else row.append(buildEmpty());
         table.append(row);
     });
-
-    /*let unsizedTd = document.createElement("td");
-    let checkbox = buildCheckbox();
-    unsizedTd.append(checkbox);
-    row.append(unsizedTd);
-
-    for (let k = 0; k < 5; k++) {
-        let td = document.createElement("td");
-        row.append(td);
-    }*/
 }
 
 function buildRow() {

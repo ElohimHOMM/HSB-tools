@@ -1,6 +1,6 @@
 function readItems() {    
     let items = $.ajax({
-        url: "/src/common/items.json",
+        url: "data/items.json",
         dataType: 'json',
         async: false
     }).responseJSON.items;

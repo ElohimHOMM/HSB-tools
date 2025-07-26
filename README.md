@@ -9,5 +9,8 @@ Currently I only have a self signed Certificate, this will be resolved soon.
  - Sacks Checklist
 
 ## Node Stuff:
-Use `npm install <pkg> --save` afterwards to install a package and save it as a dependency in the package.json file.
+install dependencies:
+> npm install <pkg> --save
 
+run the app:
+> SET DEBUG=hsbtools:* & npm start
