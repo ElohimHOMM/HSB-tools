@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "45.43.163.116",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "skyblock_patch_data",
+            "username": "skyblock_admin",
+            "name": "Skyblock DB",
+            "askForPassword": true
+        }
+    ]
+}

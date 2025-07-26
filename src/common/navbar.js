@@ -9,7 +9,7 @@ function includeNavbar() {
                   Calculators
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/calculators/magicfind">Magic Find</a></li>        
+                  <li><a class="dropdown-item" href="/calculators/magicfind">Magic Find</a></li> 
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -23,6 +23,7 @@ function includeNavbar() {
         </div>
     </nav>`);
 }
+
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
@@ -35,13 +36,10 @@ function includeFooter() {
                 <a href="#" class="px-2">Top of Page</a>
             </li>
             <li>
-                <a href="#" class="px-2">About</a>
-            </li>
-            <li>
                 <a href="https://discord.gg/EC3bpJEdet" target="_blank" rel="noopener noreferrer" class="px-2">Discord</a>
             </li>
             <li>
-                <a href="mailto:support@skyblock-tools.com" target="_blank" rel="noopener noreferrer" class="px-2">Contact</a>
+                <a href="mailto:support@skyblock-tools.com" target="_blank" rel="noopener noreferrer" class="px-2">Support Mail</a>
             </li>
         </ul> 
         <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
