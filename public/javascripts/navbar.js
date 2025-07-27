@@ -16,6 +16,7 @@ function includeNavbar() {
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/lists/sacks">Sacks</a></li>
+                  <li><a class="dropdown-item" href="/lists/enigma">Enigma Souls</a></li>
                 </ul>
               </li>
             </ul>

@@ -1,0 +1,451 @@
+{
+    "souls": [{
+        "id": 1,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 2,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 3,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 4,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 5,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 6,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 7,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 8,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 9,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 10,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 11,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 12,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 13,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 14,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 15,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 16,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 17,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 18,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 19,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 20,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 21,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 22,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 23,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 24,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 25,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 26,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 27,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 28,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 29,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 30,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 31,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 32,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 33,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 34,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 35,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 36,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 37,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 38,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 39,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 40,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 41,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 42,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 43,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 44,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 45,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 46,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 47,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 48,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 49,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 50,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 51,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 52,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 53,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 54,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 55,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 56,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 57,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 58,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 59,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 60,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 61,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 62,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 63,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    },{
+        "id": 64,
+        "name": "Mandraa",
+        "obtaining": "REFORGE_STONE",
+        "x": 1,
+        "y": 1,
+        "z": 1
+    }]
+}

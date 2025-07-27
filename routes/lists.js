@@ -8,5 +8,8 @@ router.use(express.static(path.join(__dirname, '..', 'public')));
 router.get('/sacks', function(req, res, next) {
   res.sendFile(path.join(basePath, 'sacks.html'));
 });
+router.get('/enigma', function(req, res, next) {
+  res.sendFile(path.join(basePath, 'enigma.html'));
+});
 
 module.exports = router;
