@@ -2,7 +2,7 @@
 
 Website: http://skyblock-tools.com
 Currently I only have a self signed Certificate, this will be resolved soon.
-Looking how my host resolved node stuff
+Looking how my host resolved node stuff.
 
 Honorable Mention to https://github.com/Niklaws
 
