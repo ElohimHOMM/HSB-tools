@@ -1,3 +1,5 @@
 .env
 node_modules/
 .vscode/
+Skyblock DB.session.sql
+notes*

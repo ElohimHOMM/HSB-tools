@@ -1,4 +1,4 @@
-function includeNavbar() {
+$(function() {
   $("#navbar-container").html(`<nav id="navbar-top" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">HSB Tools</a>
@@ -20,18 +20,14 @@ function includeNavbar() {
                 </ul>
               </li>
             </ul>
+          <div class="my-2 my-lg-0">
+            <button class="btn btn-outline-info my-2 my-sm-0">Log In / Sign Up</button>
+          </div>
           </div>
         </div>
     </nav>`);
-}
 
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
-
-function includeFooter() {
-  $("#footer-container").html(
+    $("#footer-container").html(
     `<ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li>
                 <a href="#" class="px-2">Top of Page</a>
@@ -44,4 +40,13 @@ function includeFooter() {
             </li>
         </ul> 
         <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
-}
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+	$('#modal-login').on('shown.bs.modal', function () {
+		$('#modal-login-button').focus();
+	});
+});
