@@ -7,15 +7,6 @@ function readItems() {
     return items;
 }
 
-function readItems() {    
-    let items = $.ajax({
-        url: "data/items.json",
-        dataType: 'json',
-        async: false
-    }).responseJSON.items;
-    return items;
-}
-
 function mapSacks(items) {
     let ret = Map.groupBy(items, ({name}) => {
         if (!name.match(new RegExp("Extra Large |Large |Medium |Small "))) {
