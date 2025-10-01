@@ -1,7 +1,4 @@
 $(function() {
-    includeNavbar();
-    includeFooter();
-    
     $("#start-button").click(function() {
         let baseDropChance = $("#input-bdc").val();
         let magicFind = $("#input-mf").val();
