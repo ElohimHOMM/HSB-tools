@@ -7,6 +7,15 @@ function readItems() {
     return items;
 }
 
+function readEnigmas() {    
+    let items = $.ajax({
+        url: "data/enigma.json",
+        dataType: 'json',
+        async: false
+    }).responseJSON.souls;
+    return items;
+}
+
 function mapSacks(items) {
     let ret = Map.groupBy(items, ({name}) => {
         if (!name.match(new RegExp("Extra Large |Large |Medium |Small "))) {

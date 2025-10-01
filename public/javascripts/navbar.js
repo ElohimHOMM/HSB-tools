@@ -1,4 +1,18 @@
-$(function() {
+$(function () {
+  initializeBars();
+
+  // Enable tooltips globally
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
+  $('#modal-login').on('shown.bs.modal', function () {
+    $('#modal-login-button').focus();
+  });
+});
+
+function initializeBars() {
   $("#navbar-container").html(`<nav id="navbar-top" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">HSB Tools</a>
@@ -27,26 +41,17 @@ $(function() {
         </div>
     </nav>`);
 
-    $("#footer-container").html(
+  $("#footer-container").html(
     `<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li>
-                <a href="#" class="px-2">Top of Page</a>
-            </li>
-            <li>
-                <a href="https://discord.gg/EC3bpJEdet" target="_blank" rel="noopener noreferrer" class="px-2">Discord</a>
-            </li>
-            <li>
-                <a href="mailto:support@skyblock-tools.com" target="_blank" rel="noopener noreferrer" class="px-2">Support Mail</a>
-            </li>
-        </ul> 
-        <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
-
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-
-	$('#modal-login').on('shown.bs.modal', function () {
-		$('#modal-login-button').focus();
-	});
-});
+        <li>
+            <a href="#" class="px-2">Top of Page</a>
+        </li>
+        <li>
+            <a href="https://discord.gg/EC3bpJEdet" target="_blank" rel="noopener noreferrer" class="px-2">Discord</a>
+        </li>
+        <li>
+            <a href="mailto:support@skyblock-tools.com" target="_blank" rel="noopener noreferrer" class="px-2">Support Mail</a>
+        </li>
+    </ul> 
+    <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
+}

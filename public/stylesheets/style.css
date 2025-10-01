@@ -23,3 +23,14 @@ a {
   text-decoration: none;
   color: white;
 }
+
+.table>tbody>tr:nth-child(odd)>td, 
+.table>tbody>tr:nth-child(odd)>th {
+   background-color: rgb(37, 41, 45, 0.6);
+   --bs-table-striped-bg: rgb(0, 0, 0, 0);
+}
+
+.table>tbody>tr:nth-child(even)>td, 
+.table>tbody>tr:nth-child(even)>th {
+   background-color: rgb(44, 48, 52, 0.6);
+}

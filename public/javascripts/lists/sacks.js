@@ -75,7 +75,7 @@ $(function() {
     let mappedItems = mapSacks(filteredItems);
     console.log(mappedItems);
 
-    let table = $("#table-to-insert");
+    let table = $("#table-container");
 
     mappedItems.get("Unsized").forEach(unsized_bag => buildUnsizedTableRow(unsized_bag, table));
     buildMultiSizeTableRow(mappedItems, table)
