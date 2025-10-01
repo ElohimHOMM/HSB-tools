@@ -1,0 +1,16 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "host": "${DB_HOST}",
+    "database": "skyblock_data",
+    "user": "${DB_USER}",
+    "password": "${DB_PASSWORD}"
+  },
+  "prod": {
+    "driver": "mysql",
+    "host": "${DB_HOST}",
+    "database": "skyblock_data_p",
+    "user": "${DB_USER}",
+    "password": "${DB_PASSWORD}"
+  }
+}

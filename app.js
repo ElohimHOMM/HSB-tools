@@ -17,6 +17,8 @@ var calculatorsRouter = require('./routes/calculators');
 
 var port = normalizePort(process.env.PORT || '3000');
 
+var dotenvConfig = require('dotenv').config()
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
