@@ -8,17 +8,19 @@ var http = require('http');
 const cors = require('cors');
 
 var app = express();
+const publicPath = path.join(__dirname, 'public')
 
-var apiRouter = require('./routes/api');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var listsRouter = require('./routes/lists');
-var calculatorsRouter = require('./routes/calculators');
+app.locals.publicPath = publicPath;
+
+var apiRouter = require('./src/routes/api')(publicPath);
+var indexRouter = require('./src/routes/index')(publicPath);
+var usersRouter = require('./src/routes/users')(publicPath);
+var listsRouter = require('./src/routes/lists')(publicPath);
+var calculatorsRouter = require('./src/routes/calculators')(publicPath);
 
 var port = normalizePort(process.env.PORT || '3000');
 
 var dotenvConfig = require('dotenv').config()
-const publicPath = path.join(__dirname, '..', 'public')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,15 +32,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(publicPath));
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/users', usersRouter);
 app.use('/lists', listsRouter);
 app.use('/calculators', calculatorsRouter);
-
-app.locals.publicPath = publicPath;
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,7 +49,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'dev' ? err : {};
 
   // render the error page
   res.status(err.status || 500);

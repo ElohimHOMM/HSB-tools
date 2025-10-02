@@ -1,15 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+const express = require('express');
+const path = require('path');
 
-var basePath = path.join(publicpath, 'html', 'lists');
+module.exports = function (publicPath) {
+  const router = express.Router();
 
-router.use(express.static(publicPath));
-router.get('/sacks', function(req, res, next) {
-  res.sendFile(path.join(basePath, 'sacks.html'));
-});
-router.get('/enigma', function(req, res, next) {
-  res.sendFile(path.join(basePath, 'enigma.html'));
-});
+  const basePath = path.join(publicPath, 'html', 'lists');
 
-module.exports = router;
+  router.get('/sacks', function (req, res, next) {
+    res.sendFile(path.join(basePath, 'sacks.html'));
+  });
+
+  router.get('/enigma', function (req, res, next) {
+    res.sendFile(path.join(basePath, 'enigma.html'));
+  });
+
+  return router;
+};
