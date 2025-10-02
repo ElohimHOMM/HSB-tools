@@ -11,18 +11,18 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, callback) {
-  // This is a temporary table to hold JSON Data, once the endpoints to manage this data are done, we can remove this table and its migration
-  db.createTable('DATA', {
+  db.createTable('USER', {
     ID: { type: 'int', primaryKey: true, autoIncrement: true },
     NAME: { type: 'string', length: 100, notNull: true },
-    VALUE: { type: 'text', length: 'long', notNull: true }, // LONGTEXT for large JSON
+    PASSWORD: { type: 'string', length: 100, notNull: true },
+    EMAIL: { type: 'string', length: 100, notNull: false, unique: true }, // for now we don't require an email
     CREATED_AT: { type: 'datetime', notNull: true },
     UPDATED_AT: { type: 'datetime' }
   }, callback);
 };
 
 exports.down = function(db, callback) {
-  db.dropTable('DATA', callback);
+  db.dropTable('USER', callback);
 };
 
 exports._meta = {

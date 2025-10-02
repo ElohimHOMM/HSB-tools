@@ -18,6 +18,7 @@ var calculatorsRouter = require('./routes/calculators');
 var port = normalizePort(process.env.PORT || '3000');
 
 var dotenvConfig = require('dotenv').config()
+const publicPath = path.join(__dirname, '..', 'public')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +37,8 @@ app.use('/api', apiRouter);
 app.use('/users', usersRouter);
 app.use('/lists', listsRouter);
 app.use('/calculators', calculatorsRouter);
+
+app.locals.publicPath = publicPath;
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

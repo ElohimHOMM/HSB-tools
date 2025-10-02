@@ -1,16 +1,16 @@
 {
   "dev": {
     "driver": "mysql",
-    "host": "${DB_HOST}",
+    "host": { "ENV": "DB_HOST"},
     "database": "skyblock_data",
-    "user": "${DB_USER}",
-    "password": "${DB_PASSWORD}"
+    "user": { "ENV": "DB_USER"},
+    "password": { "ENV": "DB_PASSWORD"}
   },
   "prod": {
     "driver": "mysql",
-    "host": "${DB_HOST}",
+    "host": { "ENV": "DB_HOST"},
     "database": "skyblock_data_p",
-    "user": "${DB_USER}",
-    "password": "${DB_PASSWORD}"
+    "user": { "ENV": "DB_USER"},
+    "password": { "ENV": "DB_PASSWORD"}
   }
 }
