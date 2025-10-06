@@ -1,9 +1,8 @@
 const express = require('express');
 const path = require('path');
 
-const basePath = path.join(__dirname, '..', 'src', 'calculators');
-
 module.exports = function (publicPath) {
+  const basePath = path.join(publicPath, 'html', 'calculators');
   const router = express.Router();
 
   router.get('/magicfind', function (req, res, next) {

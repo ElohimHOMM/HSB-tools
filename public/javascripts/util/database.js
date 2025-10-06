@@ -1,6 +1,6 @@
 function readItems() {    
     let items = $.ajax({
-        url: "data/items.json",
+        url: "/data/items.json",
         dataType: 'json',
         async: false
     }).responseJSON.items;
@@ -9,7 +9,7 @@ function readItems() {
 
 function readEnigmas() {    
     let items = $.ajax({
-        url: "data/enigma.json",
+        url: "/data/enigma.json",
         dataType: 'json',
         async: false
     }).responseJSON.souls;
