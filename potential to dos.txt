@@ -1,0 +1,29 @@
+💡 UI / Navigation Improvements You Could Consider
+
+Here are some practical ideas based on your current Pug + Bootstrap setup:
+
+🧭 1. Unified Navbar Component
+
+Move your current header/navbar logic into components/navbar.pug.
+
+Highlight the active page using the route (e.g., /lists, /calculators, /account).
+
+Optionally, make it responsive (Bootstrap’s navbar collapse already helps).
+
+🎨 2. Consistent Theming
+
+Add a light/dark toggle (Bootstrap 5.3 supports data-bs-theme natively).
+
+Use CSS variables or SCSS to give the site a distinct color identity (still within Skyblock’s aesthetic).
+
+🧩 3. Sidebar for Tools/Checklists
+
+For pages with lots of subtools (like calculators or lists), add a sidebar navigation.
+
+This helps users move between related sections quickly.
+
+🪶 4. Footer Improvements
+
+Include version info or changelog links.
+
+Add social/Discord buttons with icons from Bootstrap Icons

@@ -1,0 +1,29 @@
+extends ../../layout.pug
+
+block content
+  h1.text-center.mt-4 Enigma Souls Checklist
+  hr
+
+  .row.mt-3
+    .col
+      h3 List of all Enigma Souls
+
+  .row.mt-3
+    .col
+      table.table.table-dark
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") Name
+            th(scope="col") X
+            th(scope="col") Y
+            th(scope="col") Z
+            th(scope="col") Zone
+            th(scope="col") Obtaining / Requirements
+            th(scope="col") Claimed
+        tbody#table-container
+
+block scripts
+  script(src="/javascripts/navbar.js")
+  script(src="/javascripts/util/database.js")
+  script(src="/javascripts/lists/enigma.js")

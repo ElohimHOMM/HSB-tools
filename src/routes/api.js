@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 require('dotenv').config();
 
-module.exports = function (publicPath) {
+module.exports = function () {
   const router = express.Router();
 
   router.get('/minecraft/profile/:username', async (req, res) => {

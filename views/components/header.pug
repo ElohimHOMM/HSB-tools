@@ -1,0 +1,24 @@
+.sticky-top 
+  nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    .container-fluid
+      a.navbar-brand(href="/") HSB Tools
+      .collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle(href="#", role="button", data-bs-toggle="dropdown", aria-expanded="false")
+              | Calculators
+            ul.dropdown-menu
+              li
+                a.dropdown-item(href="/calculators/magicfind") Magic Find
+
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle(href="#", role="button", data-bs-toggle="dropdown", aria-expanded="false")
+              | Lists
+            ul.dropdown-menu
+              li
+                a.dropdown-item(href="/lists/sacks") Sacks
+              li
+                a.dropdown-item(href="/lists/enigma") Enigma Souls
+
+        .my-2.my-lg-0
+          button#modal-login-button.btn.btn-outline-info.my-2.my-sm-0 Log In / Sign Up

@@ -1,5 +1,6 @@
 $(function () {
   initializeBars();
+  initializeModals();
 
   // Enable tooltips globally
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -11,6 +12,26 @@ $(function () {
     $('#modal-login-button').focus();
   });
 });
+
+function initializeModals() {
+  $("#modal-container").append(`
+    <div class="modal fade" id="modal-login" aria-labelledby="modal-login-label">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-login-label">Login/Register</h5>
+                    </div>
+                    <div class="modal-body">
+                        insert mask here.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+          `);
+}
 
 function initializeBars() {
   $("#navbar-container").html(`<nav id="navbar-top" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,7 +56,7 @@ function initializeBars() {
               </li>
             </ul>
           <div class="my-2 my-lg-0">
-            <button class="btn btn-outline-info my-2 my-sm-0">Log In / Sign Up</button>
+            <button id='#modal-login-button' class="btn btn-outline-info my-2 my-sm-0">Log In / Sign Up</button>
           </div>
           </div>
         </div>

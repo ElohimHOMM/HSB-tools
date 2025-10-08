@@ -1,0 +1,54 @@
+extends ../../layout.pug
+
+block content
+  h1.text-center.mt-4 Magic Find Calculator
+
+  .row.mt-4
+    .col
+      h3 All Sources:
+      ul
+        li Bestiary Level for that specific Enemy
+        li
+          p
+            | Profile > Misc Stats > Magic Find
+            svg.bi.bi-info-circle(
+              xmlns="http://www.w3.org/2000/svg",
+              width="16",
+              height="16",
+              fill="currentColor",
+              viewBox="0 0 16 16",
+              data-bs-toggle="tooltip",
+              data-bs-placement="top",
+              title="e.g. Pet Score and Permanent Magic Find"
+            )
+              path(d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16")
+              path(d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0")
+
+    .col
+      h3 Plans for this Site
+      p I want to eventually have a dropdown for enemies / drops. Let's see how doable that is. lol
+
+  hr
+
+  .row.mt-4
+    .col-3
+      label.form-label(for="input-bdc") Base Drop Chance
+      .input-group.mb-3
+        input.form-control#input-bdc(type="text")
+        .input-group-append
+          span.input-group-text %
+    .col-3
+      label.form-label(for="input-mf") Magic Find
+      input.form-control#input-mf(type="text")
+    .col
+      label.form-label(for="output") Output
+      p#p-output
+
+  .row.mt-3
+    .col
+      button.btn.btn-secondary#start-button(type="button") Start
+      hr
+
+block scripts
+  script(src="/javascripts/navbar.js")
+  script(src="/javascripts/calculators/magicfind.js")

@@ -1,0 +1,66 @@
+extends ../layout.pug
+
+block content
+  .alert.alert-warning(role="alert")
+    | Currently this site does not have a non self-signed certificate. Your browser may warn you, I am working to
+    | resolve this. Thank you for your patience.
+
+  h1.text-center Skyblock Tools
+  hr
+  h2.text-center Welcome
+
+  .row
+    .col-6
+      p Welcome to Skyblock Tools. This is a website written by, so far, one person. It started out as just a 
+        | way for me to keep track of what I have crafted already (e.g. sacks) and what I'm still missing.
+      p If you have any feature requests or ideas, let me know in the Discord, which you can find at the 
+        | bottom of every page.
+      p My goal is to have every important tool united under one roof, with calculators, checklists, 
+        | progression and many more. Of course to reach that goal, I need a lot of help and third party 
+        | resources, which will be updated in the Reference section.
+      p Special Thanks to everyone helping out with this project. Here are some infos regarding the server 
+        | costs: Currently domain, webhosting and certificates cost me around 80 Euros a year.
+      b We are in no way, shape or form affiliated with Hypixel. This is a purely fan made project.
+    .col-3
+      h4.text-center References
+      p All of these open in a new tab.
+      ul.list-group
+        a.list-group-item.list-group-item-dark(href="https://wiki.hypixel.net/Main_Page", target="_blank", rel="noopener noreferrer") Hypixel Wiki
+        a.list-group-item.list-group-item-dark(href="https://docs.google.com/spreadsheets/d/1ZY-nG60U7amPfqEcKnP5qkcK2JKrzpTyX8NkpPlYwZU/htmlview#", target="_blank", rel="noopener noreferrer") Skyblock Things by Georik
+        a.list-group-item.list-group-item-dark(href="https://sky.shiiyu.moe", target="_blank", rel="noopener noreferrer") SkyCrypt
+        a.list-group-item.list-group-item-dark(href="https://status.hypixel.net", target="_blank", rel="noopener noreferrer") Hypixel Server Status
+
+    .col-3
+      h4.text-center Collaborators
+      p Looking for motivated collaborators.
+      ul.list-group
+        li.list-group-item.list-group-item-dark ★ _.intothevoid._
+
+  .row.mt-5
+    h2.text-center Changelog
+
+    .col-3
+      .card.border-dark.text-bg-dark
+        h5.card-header Update 0.1.0 - The Barn Update
+        .card-body
+          h5.card-title Initial Version
+          p.card-text Page with 2 Sub Pages
+          button#modal-patchnotes-010-button.btn.btn-secondary(type="button", data-bs-toggle="modal", data-bs-target="#modal-patchnotes-010") Full Patchnotes
+
+  hr
+
+  // Modals
+  .modal-container
+    .modal.fade#modal-patchnotes-010(aria-labelledby="modal-patchnotes-010-label")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5.modal-title#modal-patchnotes-010-label Update 0.1.0 - The Barn Update
+          .modal-body
+            // insert patch notes here
+          .modal-footer
+            button.btn.btn-secondary(type="button", data-bs-dismiss="modal") Close
+
+block scripts
+  script(src="/javascripts/navbar.js")
+  script(src="/javascripts/index.js")

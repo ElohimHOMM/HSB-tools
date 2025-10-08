@@ -1,0 +1,29 @@
+extends ../../layout.pug
+
+block content
+  h1.text-center.mt-4 Sacks Checklist
+  hr
+
+  .row.mt-3
+    .col
+      h3 List of all Sacks
+
+  .row.mt-3
+    .col
+      table.table.table-dark
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") Name
+            th(scope="col") Unsized
+            th(scope="col") Small
+            th(scope="col") Medium
+            th(scope="col") Large
+            th(scope="col") Extra Large
+            th(scope="col") Enchanted
+        tbody#table-container
+
+block scripts
+  script(src="/javascripts/navbar.js")
+  script(src="/javascripts/util/database.js")
+  script(src="/javascripts/lists/sacks.js")

@@ -1,11 +1,11 @@
 var express = require('express');
 var path = require('path');
 
-module.exports = function (publicPath) {
+module.exports = function () {
   const router = express.Router();
 
   router.get('/', function (req, res, next) {
-    res.sendFile(path.join(publicPath, 'html', 'index.html'));
+    res.render('pages/index', { title: 'Home - HSB Tools' });
   });
 
   return router;
