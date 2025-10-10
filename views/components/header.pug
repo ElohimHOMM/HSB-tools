@@ -5,20 +5,29 @@
       .collapse.navbar-collapse#navbarSupportedContent
         ul.navbar-nav.me-auto.mb-2.mb-lg-0
           li.nav-item.dropdown
-            a.nav-link.dropdown-toggle(href="#", role="button", data-bs-toggle="dropdown", aria-expanded="false")
+            a.nav-link.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false")
               | Calculators
             ul.dropdown-menu
               li
                 a.dropdown-item(href="/calculators/magicfind") Magic Find
 
           li.nav-item.dropdown
-            a.nav-link.dropdown-toggle(href="#", role="button", data-bs-toggle="dropdown", aria-expanded="false")
+            a.nav-link.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false")
               | Lists
             ul.dropdown-menu
               li
                 a.dropdown-item(href="/lists/sacks") Sacks
               li
                 a.dropdown-item(href="/lists/enigma") Enigma Souls
-
-        .my-2.my-lg-0
-          button#modal-login-button.btn.btn-outline-info.my-2.my-sm-0 Log In / Sign Up
+      if user
+        .d-flex.align-items-center
+          img.rounded-circle.me-2(src=user.avatarUrl || '/images/default-avatar.png' alt='avatar' width='32' height='32')
+          span.text-light.me-3 #{user.name}
+          form(action='/auth/logout' method='post')
+            button.btn.btn-outline-light.btn-sm(type='submit') Logout
+      else
+        button#modal-login-button.btn.btn-outline-info.my-2.my-sm-0(
+  type='button',
+  data-bs-toggle='modal',
+  data-bs-target='#modal-login-signup'
+) Log In / Sign Up

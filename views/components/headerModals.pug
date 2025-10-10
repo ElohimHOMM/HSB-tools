@@ -1,0 +1,42 @@
+//- Login / Signup Modal
+div#modal-login-signup.modal.fade(tabindex='-1' aria-labelledby='modalLoginLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    .modal-content.bg-dark.text-light
+      .modal-header
+        h5#modalLoginLabel.modal-title Log In / Sign Up
+        button.btn-close.btn-close-white(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        ul.nav.nav-tabs.mb-3(role='tablist')
+          li.nav-item(role='presentation')
+            button.nav-link.active#login-tab(data-bs-toggle='tab' data-bs-target='#login' type='button' role='tab') Log In
+          li.nav-item(role='presentation')
+            button.nav-link#signup-tab(data-bs-toggle='tab' data-bs-target='#signup' type='button' role='tab') Sign Up
+
+        .tab-content
+          //- Login Tab
+          .tab-pane.fade.show.active#login(role='tabpanel' aria-labelledby='login-tab')
+            form#login-form
+              .mb-3
+                label.form-label(for='login-username') Username
+                input#login-username.form-control(type='text' required)
+              .mb-3
+                label.form-label(for='login-password') Password
+                input#login-password.form-control(type='password' required)
+              button.btn.btn-primary.w-100(type='submit') Log In
+
+          //- Signup Tab
+          .tab-pane.fade#signup(role='tabpanel' aria-labelledby='signup-tab')
+            p So far the email has no purpose, there is no account recovery yet. Please only add it if you want to.
+            form#signup-form
+              .mb-3
+                label.form-label(for='signup-username') Username
+                input#signup-username.form-control(type='text' required)
+              .mb-3
+                label.form-label(for='signup-password') Password
+                input#signup-password.form-control(type='password' required)
+              .mb-3
+                label.form-label(for='signup-email') Email (optional)
+                input#signup-email.form-control(type='email')
+              button.btn.btn-success.w-100(type='submit') Create Account
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

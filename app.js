@@ -10,23 +10,51 @@ const cors = require('cors');
 var dotenvConfig = require('dotenv').config()
 
 var app = express();
-const session = require('express-session');
 const publicPath = path.join(__dirname, 'public')
-const SQLiteStore = require('connect-sqlite3')(session);
 
-// adjust these settings to your .env or db connection
+app.locals.publicPath = publicPath;
+
+// -- session stuff --
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session); // <--- important!
+
 const sessionStore = new MySQLStore({
   host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 3306,
+  port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASS || '',
   database: process.env.DB_NAME || 'hsbtools',
+  // optional settings:
   clearExpired: true,
   checkExpirationInterval: 900000, // 15 minutes
   expiration: 1000 * 60 * 60 * 24 * 7 // 1 week
 });
 
-app.locals.publicPath = publicPath;
+app.use(session({
+  key: 'hsbtools.sid',
+  secret: process.env.SESSION_SECRET || 'replace-with-real-secret',
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // set true only when serving over HTTPS in production
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7
+  }
+}));
+
+app.use((req, res, next) => {
+  if (req.session.userId) {
+    res.locals.user = {
+      id: req.session.userId,
+      name: req.session.username,
+      avatarUrl: req.session.avatarUrl || '/images/default_avatar.png'
+    };
+  } else {
+    res.locals.user = null;
+  }
+  next();
+});
 
 // Call it like this if you need a parameter.
 // var apiRouter = require('./src/routes/api')(publicPath);
@@ -35,6 +63,7 @@ var indexRouter = require('./src/routes/index')();
 var usersRouter = require('./src/routes/users')();
 var listsRouter = require('./src/routes/lists')();
 var calculatorsRouter = require('./src/routes/calculators')();
+var authRouter = require('./src/routes/auth')();
 
 var port = normalizePort(process.env.PORT || '3000');
 

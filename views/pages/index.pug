@@ -49,17 +49,9 @@ block content
 
   hr
 
+block modals
   // Modals
-  .modal-container
-    .modal.fade#modal-patchnotes-010(aria-labelledby="modal-patchnotes-010-label")
-      .modal-dialog
-        .modal-content
-          .modal-header
-            h5.modal-title#modal-patchnotes-010-label Update 0.1.0 - The Barn Update
-          .modal-body
-            // insert patch notes here
-          .modal-footer
-            button.btn.btn-secondary(type="button", data-bs-dismiss="modal") Close
+  include ../components/examplePatchNoteModal.pug
 
 block scripts
   script(src="/javascripts/navbar.js")

@@ -1,78 +1,64 @@
-$(function () {
-  initializeBars();
-  initializeModals();
+$(document).ready(function() {
+  // Check if user is logged in
+  $.get('/auth/session', function(data) {
+    if (data.loggedIn) {
+      // Optional: could replace DOM dynamically instead of full reload
+      location.reload();
+    }
+  });
 
-  // Enable tooltips globally
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
-  })
+  $('#loginForm').on('submit', function(e) {
+    e.preventDefault();
+    const payload = {
+      username: $('#login-username').val(),
+      password: $('#login-password').val(),
+    };
+    $.ajax({
+      url: '/auth/login',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(payload),
+      success: function() {
+        $('#loginModal').modal('hide');
+        location.reload();
+      },
+      error: function(err) {
+        alert('Login failed: ' + err.responseJSON?.error || 'Unknown error');
+      },
+    });
+  });
+  
+  
+  // -- Event Listener for Signup Form --
+  document.addEventListener("DOMContentLoaded", () => {
+  const signupForm = document.getElementById("signup-form");
 
-  $('#modal-login').on('shown.bs.modal', function () {
-    $('#modal-login-button').focus();
+  signupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("signup-username").value.trim();
+    const password = document.getElementById("signup-password").value;
+    const email = document.getElementById("signup-email").value.trim();
+
+    try {
+      const res = await fetch("/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password, email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Account created successfully! Please log in.");
+        // Optionally auto-switch to login tab
+      } else {
+        alert(data.error || "Something went wrong");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error, try again later");
+    }
   });
 });
-
-function initializeModals() {
-  $("#modal-container").append(`
-    <div class="modal fade" id="modal-login" aria-labelledby="modal-login-label">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modal-login-label">Login/Register</h5>
-                    </div>
-                    <div class="modal-body">
-                        insert mask here.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-          `);
-}
-
-function initializeBars() {
-  $("#navbar-container").html(`<nav id="navbar-top" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">HSB Tools</a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Calculators
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/calculators/magicfind">Magic Find</a></li> 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/lists/sacks">Sacks</a></li>
-                  <li><a class="dropdown-item" href="/lists/enigma">Enigma Souls</a></li>
-                </ul>
-              </li>
-            </ul>
-          <div class="my-2 my-lg-0">
-            <button id='#modal-login-button' class="btn btn-outline-info my-2 my-sm-0">Log In / Sign Up</button>
-          </div>
-          </div>
-        </div>
-    </nav>`);
-
-  $("#footer-container").html(
-    `<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li>
-            <a href="#" class="px-2">Top of Page</a>
-        </li>
-        <li>
-            <a href="https://discord.gg/EC3bpJEdet" target="_blank" rel="noopener noreferrer" class="px-2">Discord</a>
-        </li>
-        <li>
-            <a href="mailto:support@skyblock-tools.com" target="_blank" rel="noopener noreferrer" class="px-2">Support Mail</a>
-        </li>
-    </ul> 
-    <p class="text-center">© 2025 - _.intothevoid._</p> </footer>`);
-}
+});
