@@ -1,13 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var debug = require('debug')('hsbtools:server');
-var http = require('http');
+const createError = require('http-errors');
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const debug = require('debug')('hsbtools:server');
+const http = require('http');
 const cors = require('cors');
 
-var dotenvConfig = require('dotenv').config()
+require('dotenv').config()
 
 var app = express();
 const publicPath = path.join(__dirname, 'public')
@@ -15,7 +16,6 @@ const publicPath = path.join(__dirname, 'public')
 app.locals.publicPath = publicPath;
 
 // -- session stuff --
-const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session); // <--- important!
 
 const sessionStore = new MySQLStore({
@@ -60,10 +60,9 @@ app.use((req, res, next) => {
 // var apiRouter = require('./src/routes/api')(publicPath);
 var apiRouter = require('./src/routes/api')();
 var indexRouter = require('./src/routes/index')();
-var usersRouter = require('./src/routes/users')();
 var listsRouter = require('./src/routes/lists')();
 var calculatorsRouter = require('./src/routes/calculators')();
-var authRouter = require('./src/routes/auth')();
+var apiAuthRouter = require('./src/routes/api/auth')();
 
 var port = normalizePort(process.env.PORT || '3000');
 
@@ -81,9 +80,9 @@ app.use(express.static(publicPath));
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
-app.use('/users', usersRouter);
 app.use('/lists', listsRouter);
 app.use('/calculators', calculatorsRouter);
+app.use('/api/auth', apiAuthRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
