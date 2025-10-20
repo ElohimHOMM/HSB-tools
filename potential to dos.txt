@@ -4,8 +4,6 @@ Here are some practical ideas based on your current Pug + Bootstrap setup:
 
 🧭 1. Unified Navbar Component
 
-Move your current header/navbar logic into components/navbar.pug.
-
 Highlight the active page using the route (e.g., /lists, /calculators, /account).
 
 Optionally, make it responsive (Bootstrap’s navbar collapse already helps).
@@ -27,3 +25,9 @@ This helps users move between related sections quickly.
 Include version info or changelog links.
 
 Add social/Discord buttons with icons from Bootstrap Icons
+
+
+/////////////////////////////////////
+
+Add Multiple Minecraft Accounts linked to one HSBT Account. 
+Add "Primary Account" Flag in Minecraft Account

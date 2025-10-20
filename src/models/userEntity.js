@@ -21,6 +21,21 @@ const User = {
 
   async validatePassword(password, hash) {
     return bcrypt.compare(password, hash);
+  },
+
+  async findById(id) {
+    const [rows] = await pool.query('SELECT * FROM USER WHERE ID = ?', [id]);
+    return rows[0];
+  },
+
+  async getMinecraftAccounts(userId) {
+    const [rows] = await pool.query(
+      `SELECT MC_USERNAME, MC_UUID, AVATAR_URL, CREATED_AT
+       FROM MINECRAFT_ACCOUNT
+       WHERE USER_ID = ?`,
+      [userId]
+    );
+    return rows;
   }
 };
 

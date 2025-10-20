@@ -20,14 +20,20 @@
               li
                 a.dropdown-item(href="/lists/enigma") Enigma Souls
       if user
-        .d-flex.align-items-center
-          img.rounded-circle.me-2(src=user.avatarUrl || '/images/default-avatar.png' alt='avatar' width='32' height='32')
-          span.text-light.me-3 #{user.name}
-          form(action='/auth/logout' method='post')
-            button.btn.btn-outline-light.btn-sm(type='submit') Logout
+        .dropdown
+          button#userDropdown.btn.btn-dark.dropdown-toggle.d-flex.align-items-center(type='button', data-bs-toggle='dropdown', aria-expanded='false')
+            img.rounded-circle.me-2(src=user.avatarUrl || '/images/default_avatar.png' alt='avatar' width='32' height='32')
+            span.ms-1 #{user.name}
+          ul.dropdown-menu.dropdown-menu-end(aria-labelledby='userDropdown')
+            li
+              a.dropdown-item(href='/' + user.name + '/profile') Profile
+            li
+              hr.dropdown-divider
+            li
+              button#logout-btn.dropdown-item(type='button') Logout
       else
         button#modal-login-button.btn.btn-outline-info.my-2.my-sm-0(
-  type='button',
-  data-bs-toggle='modal',
-  data-bs-target='#modal-login-signup'
-) Log In / Sign Up
+          type='button',
+          data-bs-toggle='modal',
+          data-bs-target='#modal-login-signup'
+        ) Log In / Sign Up

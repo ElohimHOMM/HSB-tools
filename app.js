@@ -31,24 +31,18 @@ const sessionStore = new MySQLStore({
 });
 
 app.use(session({
-  key: 'hsbtools.sid',
-  secret: process.env.SESSION_SECRET || 'replace-with-real-secret',
-  store: sessionStore,
+  secret: process.env.SESSION_SECRET || 'change_this_secret',
   resave: false,
   saveUninitialized: false,
-  cookie: {
-    secure: false, // set true only when serving over HTTPS in production
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 7
-  }
+  cookie: { secure: false } // true if using HTTPS
 }));
 
 app.use((req, res, next) => {
-  if (req.session.userId) {
+  if (req.session.user) {
     res.locals.user = {
-      id: req.session.userId,
-      name: req.session.username,
-      avatarUrl: req.session.avatarUrl || '/images/default_avatar.png'
+      id: req.session.user.userId,
+      name: req.session.user.name,
+      avatarUrl: req.session.user.avatarUrl || '/images/default_avatar.png'
     };
   } else {
     res.locals.user = null;
@@ -63,6 +57,9 @@ var indexRouter = require('./src/routes/index')();
 var listsRouter = require('./src/routes/lists')();
 var calculatorsRouter = require('./src/routes/calculators')();
 var apiAuthRouter = require('./src/routes/api/auth')();
+var apiMinecraftRouter = require('./src/routes/api/minecraft')();
+
+var userRoute = require('./src/routes/user')();
 
 var port = normalizePort(process.env.PORT || '3000');
 
@@ -83,6 +80,9 @@ app.use('/api', apiRouter);
 app.use('/lists', listsRouter);
 app.use('/calculators', calculatorsRouter);
 app.use('/api/auth', apiAuthRouter);
+app.use('/api/minecraft', apiMinecraftRouter);
+
+app.use('/', userRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

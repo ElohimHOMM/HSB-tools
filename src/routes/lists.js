@@ -1,8 +1,8 @@
 const express = require('express');
+const router = express.Router();
 const path = require('path');
 
 module.exports = function () {
-  const router = express.Router();
 
   router.get('/sacks', function (req, res, next) {
     res.render('pages/lists/sacks', { title: 'Sacks Checklist - HSB Tools' })
