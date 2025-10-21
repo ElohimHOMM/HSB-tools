@@ -96,10 +96,8 @@ module.exports = function () {
                 ? `https://crafatar.com/avatars/${mcUUID}?size=64`
                 : `/api/minecraft/avatar/${mcUsername}`; // fallback option
 
-            // Insert into DB
             const id = await MinecraftAccount.create(userId, mcUsername, mcUUID, avatarUrl);
-
-            // Update session avatar immediately
+            // TODO: Nicht jedes Mal Session updaten, sondern neues Feld in Minecraft Account Datenbank Tabelle -> Ranking und in der Session ist immer die Nummer 1. Update nur nach Verschieben.
             req.session.user.avatarUrl = avatarUrl;
 
             return res.json({ success: true, message: 'Minecraft account linked!', id, avatarUrl });

@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const addForm = $('#add-mc-form')
 
-  addForm.on('submit', async function (e) {
+  $('#add-mc-form').on('submit', async function (e) {
     e.preventDefault();
     const mcUsername = $('#mc-username').val().trim();
-    if (!mcUsername) return alert('Please enter a username.');
+    if (!mcUsername) return showErrorToast('Please enter a username.');
 
     const res = await fetch('/profile/minecraft/link', {
       method: 'POST',

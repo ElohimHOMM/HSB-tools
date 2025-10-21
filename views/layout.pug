@@ -13,10 +13,10 @@ html
     link(href='/stylesheets/style.css', rel='stylesheet')
     link(rel="icon", href="/favicon.ico", type="image/x-icon")
 
-  body
+  body.d-flex.flex-column.min-vh-100
     include components/header.pug
 
-    .container.min-vh-100.d-flex.flex-column
+    .container.d-flex.flex-column.flex-grow-1
       main.flex-grow-1#main
         block alerts
         block content
