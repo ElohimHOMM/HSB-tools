@@ -1,0 +1,29 @@
+extends ../../layout
+
+block content
+  .card.mb-4.text-white.bg-transparent.border-dark
+    .card-body.text-center
+      img.rounded-circle.mb-3(src=userProfile.avatarUrl width='100' height='100')
+      h2 #{userProfile.name}
+      if userProfile.email
+        p.text-muted #{userProfile.email}
+      p Joined: #{userProfile.createdAt.toLocaleDateString()}
+
+  .card.mb-4.text-white.bg-transparent.border-dark
+    .card-header
+      h5 Minecraft Accounts
+    .card-body
+      if minecraftAccounts && minecraftAccounts.length
+        each account in minecraftAccounts
+          .d-flex.mb-3
+            img.rounded-circle.me-3(src=account.AVATAR_URL width='64' height='64')
+            div
+              strong #{account.MC_USERNAME}
+              br
+              if account.MC_UUID
+                p UUID - #{account.MC_UUID}
+      else
+        p No Minecraft account linked.
+
+block scripts
+  script(src="/javascripts/profile/summary.js")

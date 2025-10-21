@@ -9,7 +9,7 @@ function showErrorToast(message) {
 function showToast(message, type) {
   // Create toast container if it doesn’t exist
   if ($('#toast-container').length === 0) {
-    $('body').append('<div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>');
+    $('body').append('<div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>');
   }
 
   const toastId = 'toast-' + Date.now();

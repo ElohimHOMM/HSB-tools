@@ -11,7 +11,15 @@ module.exports = {
     return rows;
   },
 
-  async create(userId, mcUsername, mcUUID, avatarUrl) {
+  async getById(accountId) {
+    const [rows] = await pool.query(
+      `SELECT * FROM MINECRAFT_ACCOUNT WHERE ID = ?`,
+      [accountId]
+    );
+    return rows[0];
+  },
+
+  async create(userId, mcUsername, mcUUID = null, avatarUrl = null) {
     const [result] = await pool.query(
       `INSERT INTO MINECRAFT_ACCOUNT (USER_ID, MC_USERNAME, MC_UUID, AVATAR_URL, CREATED_AT)
        VALUES (?, ?, ?, ?, NOW())`,

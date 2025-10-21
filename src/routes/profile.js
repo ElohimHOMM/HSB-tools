@@ -4,6 +4,14 @@ const MinecraftAccount = require('../models/minecraftAccountEntity');
 const User = require('../models/userEntity');
 const { requireLogin } = require('../middleware/auth');
 
+function chunkArray(arr, size) {
+    const result = [];
+    for (let i = 0; i < arr.length; i += size) {
+        result.push(arr.slice(i, i + size));
+    }
+    return result;
+}
+
 module.exports = function () {
 
     router.get('/:username/profile', async (req, res) => {
@@ -14,14 +22,15 @@ module.exports = function () {
             if (!user) return res.status(404).render('404', { message: 'User not found' });
 
             const minecraftAccounts = await User.getMinecraftAccounts(user.ID);
+            let minecraftAccount = minecraftAccounts.length < 1 ? null : minecraftAccounts[0];
 
             // Render profile view
-            res.render('profile', {
+            res.render('pages/profile/summary', {
                 userProfile: {
                     id: user.ID,
                     name: user.NAME,
                     email: user.EMAIL,
-                    avatarUrl: user.AVATAR_URL || '/images/default_avatar.png',
+                    avatarUrl: minecraftAccount.AVATAR_URL || '/images/default_avatar.png',
                     createdAt: user.CREATED_AT
                 },
                 minecraftAccounts
@@ -50,17 +59,53 @@ module.exports = function () {
             if (!user) return res.status(404).send('User not found');
 
             const mcAccount = await MinecraftAccount.getByUserId(user.ID);
+            console.log(mcAccount);
 
-            console.log("Found account: " + user)
-
-            res.render('profile/manage', {
+            res.render('pages/profile/minecraft', {
                 title: `${username}'s Minecraft Account`,
                 userProfile: user,
-                minecraftAccount: mcAccount
+                minecraftAccount: chunkArray(mcAccount, 2)
             });
         } catch (err) {
             console.error(err);
             res.status(500).send('Internal server error');
+        }
+    });
+
+    router.post('/profile/minecraft/link', requireLogin, async (req, res) => {
+        try {
+            const userId = req.session.user.id;
+            const { mcUsername } = req.body;
+
+            if (!mcUsername) {
+                return res.status(400).json({ success: false, message: 'Minecraft username is required.' });
+            }
+
+            let mcUUID = null;
+            try {
+                const mojangRes = await fetch(`https://api.mojang.com/users/profiles/minecraft/${mcUsername}`);
+                if (mojangRes.ok) {
+                    const mojangData = await mojangRes.json();
+                    mcUUID = mojangData.id;
+                }
+            } catch (e) {
+                console.warn('Could not fetch UUID, proceeding without it');
+            }
+
+            const avatarUrl = mcUUID
+                ? `https://crafatar.com/avatars/${mcUUID}?size=64`
+                : `/api/minecraft/avatar/${mcUsername}`; // fallback option
+
+            // Insert into DB
+            const id = await MinecraftAccount.create(userId, mcUsername, mcUUID, avatarUrl);
+
+            // Update session avatar immediately
+            req.session.user.avatarUrl = avatarUrl;
+
+            return res.json({ success: true, message: 'Minecraft account linked!', id, avatarUrl });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ success: false, message: 'Internal server error' });
         }
     });
 

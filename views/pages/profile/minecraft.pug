@@ -1,0 +1,39 @@
+extends ../../layout
+
+block content
+  h1 Manage Minecraft Account for #{userProfile.NAME}
+  if minecraftAccount.length > 0
+    each row in minecraftAccount
+      .row
+        each account in row
+          .col-6
+            .card.mb-4.text-white.bg-transparent.border-dark
+              .card-body
+                .d-flex.mb-3
+                  img.rounded-circle.me-3(src=account.AVATAR_URL || '/images/default_avatar.png' alt='avatar' width='64' height='64')
+                  strong #{account.MC_USERNAME}
+                  if account.MC_UUID
+                    small.text-muted (#{account.MC_UUID})
+                  button.btn.btn-danger.mt-2.remove-mc-btn(type='button', data-id=account.ID) Remove Account
+
+  else
+    .alert.alert-dark(role='alert')
+      | You have not linked a Minecraft account to this profile yet. Linking a Minecraft account allows you to access data from Hypixel.
+  .row 
+    .col-5
+      form#add-mc-form
+        .mb-3
+          label.form-label(for='mc-username') Minecraft Username
+          input#mc-username.form-control(type='text' required)
+        button.btn.btn-success(type='submit') Link Minecraft Account
+    .col-7
+      h3 Linking a Minecraft Account
+      p Link a Minecraft Account to your HSB Tools profile in order to fetch Hypixel API Data.
+      | The data is stored safely in our database and is only used to provide you with enhanced features. 
+      | To link your account, simply enter your Minecraft username and click "Link Minecraft Account". 
+      p For example, your profile picture will be updated to your minecraft skins face.
+      | If you wish to remove the linked account, simply click the "Remove Account" button. 
+      | This will disassociate your Minecraft account from your HSB Tools profile.
+
+block scripts
+  script(src="/javascripts/profile/minecraft.js")

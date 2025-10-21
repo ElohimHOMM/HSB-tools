@@ -59,7 +59,7 @@ var calculatorsRouter = require('./src/routes/calculators')();
 var apiAuthRouter = require('./src/routes/api/auth')();
 var apiMinecraftRouter = require('./src/routes/api/minecraft')();
 
-var userRoute = require('./src/routes/user')();
+var profileRouter = require('./src/routes/profile')();
 
 var port = normalizePort(process.env.PORT || '3000');
 
@@ -82,7 +82,7 @@ app.use('/calculators', calculatorsRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/minecraft', apiMinecraftRouter);
 
-app.use('/', userRoute);
+app.use('/', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

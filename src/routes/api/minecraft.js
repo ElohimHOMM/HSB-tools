@@ -27,19 +27,28 @@ module.exports = function () {
         }
     });
 
-    // Remove Minecraft Account
-    router.post('/remove', async (req, res) => {
+    router.post('/remove/:id', async (req, res) => {
         const userId = req.session.user?.id;
-        if (!userId) return res.status(401).json({ message: 'Not logged in' });
+        const accountId = req.params.id;
+
+        if (!userId) {
+            return res.status(401).json({ message: 'Not logged in' });
+        }
 
         try {
-            const account = await MinecraftAccount.getByUserId(userId);
-            if (!account) return res.status(404).json({ message: 'No linked account' });
+            const account = await MinecraftAccount.getById(accountId);
 
-            await MinecraftAccount.delete(account.ID);
+            // Ensure the account exists and belongs to the current user
+            if (!account || account.USER_ID !== userId) {
+                return res.status(404).json({ message: 'Account not found or not owned by you' });
+            }
 
-            // Update session avatar
-            req.session.user.avatarUrl = '/images/default_avatar.png';
+            await MinecraftAccount.delete(accountId);
+
+            // Optional: Clear session avatar if it matches this account
+            if (req.session.user.avatarUrl === account.AVATAR_URL) {
+                req.session.user.avatarUrl = '/images/default_avatar.png';
+            }
 
             res.json({ message: 'Minecraft account removed' });
         } catch (err) {
@@ -47,6 +56,7 @@ module.exports = function () {
             res.status(500).json({ message: 'Internal server error' });
         }
     });
+
 
     return router;
 }
