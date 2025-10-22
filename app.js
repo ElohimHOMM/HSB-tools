@@ -56,6 +56,7 @@ var apiRouter = require('./src/routes/api')();
 var indexRouter = require('./src/routes/index')();
 var listsRouter = require('./src/routes/lists')();
 var calculatorsRouter = require('./src/routes/calculators')();
+var legalRouter = require('./src/routes/legal')();
 var apiAuthRouter = require('./src/routes/api/auth')();
 var apiMinecraftRouter = require('./src/routes/api/minecraft')();
 
@@ -79,6 +80,7 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/lists', listsRouter);
 app.use('/calculators', calculatorsRouter);
+app.use('/legal', legalRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/minecraft', apiMinecraftRouter);
 
