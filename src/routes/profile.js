@@ -22,7 +22,7 @@ module.exports = function () {
             if (!user) return res.status(404).render('404', { message: 'User not found' });
 
             const minecraftAccounts = await User.getMinecraftAccounts(user.ID);
-            let minecraftAccount = minecraftAccounts.length < 1 ? null : minecraftAccounts[0];
+            let avatarUrl = minecraftAccounts.length >= 1 && minecraftAccounts[0].AVATAR_URL ? minecraftAccount.AVATAR_URL : '/images/default_avatar.png'
 
             // Render profile view
             res.render('pages/profile/summary', {
@@ -30,7 +30,7 @@ module.exports = function () {
                     id: user.ID,
                     name: user.NAME,
                     email: user.EMAIL,
-                    avatarUrl: minecraftAccount.AVATAR_URL || '/images/default_avatar.png',
+                    avatarUrl: avatarUrl,
                     createdAt: user.CREATED_AT
                 },
                 minecraftAccounts
