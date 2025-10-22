@@ -19,9 +19,12 @@ div#modal-login-signup.modal.fade(tabindex='-1' aria-labelledby='modalLoginLabel
               .mb-3
                 label.form-label(for='login-username') Username
                 input#login-username.form-control(type='text' required)
-              .mb-3
-                label.form-label(for='login-password') Password
-                input#login-password.form-control(type='password' required)
+                .mb-3
+                  label.form-label(for='login-password') Password
+                  .input-group
+                    input#login-password.form-control(type='password' required)
+                    button.btn.btn-outline-secondary(type='button' id='toggle-login-password')
+                      i.bi.bi-eye
               button.btn.btn-primary.w-100(type='submit') Log In
 
           //- Signup Tab
@@ -36,7 +39,10 @@ div#modal-login-signup.modal.fade(tabindex='-1' aria-labelledby='modalLoginLabel
                 input#signup-username.form-control(type='text' required)
               .mb-3
                 label.form-label(for='signup-password') Password
-                input#signup-password.form-control(type='password' required)
+                .input-group
+                  input#signup-password.form-control(type='password' required)
+                  button.btn.btn-outline-secondary(type='button' id='toggle-signup-password')
+                    i.bi.bi-eye
               .mb-3
                 label.form-label(for='signup-email') Email (optional)
                 input#signup-email.form-control(type='email')

@@ -42,7 +42,7 @@ module.exports = function () {
       if (!valid) {
         return res.status(401).json({ message: 'Invalid username or password.' });
       }
-      
+
       const mcAccounts = await MinecraftAccount.getByUserId(user.ID);
       const avatarUrl = mcAccounts.length ? mcAccounts[0].AVATAR_URL : '/images/default_avatar.png';
 
@@ -87,6 +87,5 @@ module.exports = function () {
       res.status(500).json({ message: 'Internal server error.' });
     }
   });
-
   return router;
 };

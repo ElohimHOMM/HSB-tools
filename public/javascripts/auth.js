@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+  setupPasswordToggle('toggle-login-password', 'login-password');
+  setupPasswordToggle('toggle-signup-password', 'signup-password');
+
+
   $('#login-form').on('submit', function (e) {
     e.preventDefault();
 
@@ -60,7 +64,7 @@ $(document).ready(function () {
 
   $('#logout-btn').on('click', async function (e) {
     e.preventDefault();
-    
+
     $.ajax({
       url: '/api/auth/logout',
       method: 'POST',
@@ -82,3 +86,16 @@ $(document).ready(function () {
 $.get('/api/auth/session', function (data) {
   console.log('Session state:', data);
 });
+
+function setupPasswordToggle(toggleBtnId, inputId) {
+  const toggleBtn = document.getElementById(toggleBtnId);
+  const inputField = document.getElementById(inputId);
+  const icon = toggleBtn.querySelector('i');
+
+  toggleBtn.addEventListener('click', () => {
+    const isPassword = inputField.type === 'password';
+    inputField.type = isPassword ? 'text' : 'password';
+    icon.classList.toggle('bi-eye');
+    icon.classList.toggle('bi-eye-slash');
+  });
+}
