@@ -38,3 +38,7 @@ a {
 .card-body .d-flex:last-child {
   margin-bottom: 0 !important;
 }
+
+.cookie-banner {
+  z-index: 1050; /* Ensure it stays above content */
+}

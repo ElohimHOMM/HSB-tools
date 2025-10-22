@@ -22,6 +22,12 @@ html
         block alerts
         block content
       include components/footer.pug
+      //- Cookie Banner
+    div#cookie-banner.cookie-banner.d-none
+      .alert.alert-dark.alert-dismissible.fade.show.fixed-bottom.mb-0.text-center(role="alert")
+        | We use essential cookies to provide login functionality.
+        button#accept-cookies-btn.btn.btn-sm.btn-primary.ms-2(type='button') Got it
+
 
     block modals
     include components/headerModals.pug
@@ -34,4 +40,5 @@ html
     )
     script(src="/javascripts/util/toasts.js")
     script(src="/javascripts/auth.js")
+    script(src="/javascripts/layout.js")
     block scripts
