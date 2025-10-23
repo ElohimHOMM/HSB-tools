@@ -40,10 +40,16 @@ const PatchNote = {
         return rows;
     },
 
-    /**
-     * Seeds default patch note types if they don't exist.
-     * Call this on app startup.
-     */
+    async getRecentTen() {
+        const [rows] = await pool.query(`
+            SELECT ID, VERSION, TYPE_ID, PATCH_NOTE, CREATED_AT, UPDATED_AT
+            FROM PATCH_NOTES
+            ORDER BY CREATED_AT DESC
+            LIMIT 10
+        `);
+        return rows;
+    },
+
     async seedDefaultTypes() {
         const defaultTypes = ['Fix', 'Added', 'Removed', 'Updated', 'Deprecated'];
         for (const type of defaultTypes) {
@@ -61,8 +67,6 @@ const PatchNote = {
         const [rows] = await pool.query('SELECT VERSION FROM PATCH_NOTES ORDER BY CREATED_AT DESC');
         return [rows];
     }
-
-
 };
 
 module.exports = PatchNote;

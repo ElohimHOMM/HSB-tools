@@ -1,33 +1,54 @@
 extends ../../layout
 
 block content
-    .container.mt-4
-        h1 Add Patch Note
+    h1 Add Patch Note
 
-        form#add-patchnote-form
-            .row.mb-3
-                .col-md-6
-                    label.form-label(for='version') Version
-                    select#version.form-select(required)
-                        option(value='') -- Select Version --
-                        each v in versions
-                            option(value=v.VERSION) #{v.VERSION}
+    form#add-patchnote-form
+        .row.mb-3
+            .col-md-6
+                label.form-label(for='version') Version
+                input#version.form-control(type='text', list='version-options', placeholder='Select or enter a version', required)
+                datalist#version-options
+                if versions && versions.length
+                    each v in versions
+                        option(value=v.VERSION)
 
-    .col-md-6
-        label.form-label(for='typeInput') Type
-        input#typeInput.form-control(type='text' list='type-options' placeholder='Select or create type', required)
-
-        datalist#type-options
-            if types && types.length
-                each t in types
-                    option(value=t.NAME)
-
-
-            .mb-3
+            .col-md-6
+                label.form-label(for='typeInput') Type
+                input#type.form-control(type='text' list='type-options' placeholder='Select or create type', required)
+                datalist#type-options
+                    if types && types.length
+                        each t in types
+                            option(value=t.NAME)
+        .row.mb-3
+            .col
                 label.form-label(for='note') Patch Note
-                textarea#note.form-control(rows=4)
-
-            button.btn.btn-success(type='submit') Add Patch Note
+                input#note.form-control(type='text')
+        .row
+            .col-3
+                button.btn.btn-success(type='submit') Add Patch Note
+    hr
+    .row.mt-3
+        .col
+            table.table.table-dark
+                thead
+                    tr
+                        th(scope="col") #
+                        th(scope="col") Version
+                        th(scope="col") Type
+                        th(scope="col") Patch Note
+                        th(scope="col") Created At
+                        th(scope="col") Updated At
+                tbody
+                    each note in recentPatchNotes
+                        if note
+                            tr
+                                td(scope="row") #{note.ID}
+                                td #{note.VERSION}
+                                td #{note.TYPE}
+                                td #{note.PATCH_NOTE}
+                                td #{note.CREATED_AT}
+                                td #{note.UPDATED_AT}
 
 block scripts
     script(src='/javascripts/patchnotes/add.js')

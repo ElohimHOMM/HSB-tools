@@ -20,7 +20,7 @@ exports.up = function (db, callback) {
 
   db.createTable('PATCH_NOTES', {
     ID: { type: 'int', primaryKey: true, autoIncrement: true },
-    VERSION: { type: 'string', length: 100, notNull: true, unique: true },
+    VERSION: { type: 'string', length: 100, notNull: true },
     TYPE_ID: {
       type: 'int',
       notNull: true,
