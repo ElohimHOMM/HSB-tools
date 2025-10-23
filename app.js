@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const PatchNote = require('./src/models/patchNoteEntity');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
@@ -57,6 +58,7 @@ var indexRouter = require('./src/routes/index')();
 var listsRouter = require('./src/routes/lists')();
 var calculatorsRouter = require('./src/routes/calculators')();
 var legalRouter = require('./src/routes/legal')();
+var patchnotesRouter = require('./src/routes/patchnotes')();
 var apiAuthRouter = require('./src/routes/api/auth')();
 var apiMinecraftRouter = require('./src/routes/api/minecraft')();
 
@@ -81,6 +83,7 @@ app.use('/api', apiRouter);
 app.use('/lists', listsRouter);
 app.use('/calculators', calculatorsRouter);
 app.use('/legal', legalRouter);
+app.use('/patchnotes', patchnotesRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/minecraft', apiMinecraftRouter);
 
@@ -121,6 +124,14 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+(async () => {
+  try {
+    await PatchNote.seedDefaultTypes();
+  } catch (err) {
+    console.error('Failed to seed patch note types:', err);
+  }
+})();
 
 function normalizePort(val) {
   var port = parseInt(val, 10);

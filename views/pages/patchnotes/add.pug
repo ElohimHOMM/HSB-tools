@@ -1,0 +1,33 @@
+extends ../../layout
+
+block content
+    .container.mt-4
+        h1 Add Patch Note
+
+        form#add-patchnote-form
+            .row.mb-3
+                .col-md-6
+                    label.form-label(for='version') Version
+                    select#version.form-select(required)
+                        option(value='') -- Select Version --
+                        each v in versions
+                            option(value=v.VERSION) #{v.VERSION}
+
+    .col-md-6
+        label.form-label(for='typeInput') Type
+        input#typeInput.form-control(type='text' list='type-options' placeholder='Select or create type', required)
+
+        datalist#type-options
+            if types && types.length
+                each t in types
+                    option(value=t.NAME)
+
+
+            .mb-3
+                label.form-label(for='note') Patch Note
+                textarea#note.form-control(rows=4)
+
+            button.btn.btn-success(type='submit') Add Patch Note
+
+block scripts
+    script(src='/javascripts/patchnotes/add.js')
