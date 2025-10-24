@@ -67,7 +67,22 @@ const PatchNote = {
     async getAllVersions() {
         const [rows] = await pool.query('SELECT VERSION FROM PATCH_NOTES GROUP BY VERSION ORDER BY MAX(CREATED_AT) DESC');
         return rows;
+    },
+
+    async deleteById(id) {
+        const [result] = await pool.query('DELETE FROM PATCH_NOTES WHERE ID = ?', [id]);
+        return result;
+    },
+
+    async updateById(id, { version, type, note }) {
+        const typeId = await this.getOrCreateType(type);
+        const [result] = await pool.query(
+            'UPDATE PATCH_NOTES SET VERSION = ?, TYPE_ID = ?, PATCH_NOTE = ?, UPDATED_AT = NOW() WHERE ID = ?',
+            [version, typeId, note, id]
+        );
+        return result;
     }
+
 };
 
 module.exports = PatchNote;

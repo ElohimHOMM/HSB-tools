@@ -10,12 +10,6 @@ module.exports = function () {
             const versions = await PatchNote.getAllVersions();
             const recentPatchNotes = await PatchNote.getRecentTen();
 
-            if (versions && versions.length) {
-                for (let v of versions) {
-                    console.log('Version:', v.VERSION);
-                }
-            }
-
             const formattedNotes = recentPatchNotes.map(note => ({
                 ...note,
                 CREATED_AT: new Date(note.CREATED_AT).toLocaleString('en-US', {
@@ -40,23 +34,6 @@ module.exports = function () {
         } catch (err) {
             console.error(err)
             res.status(500).send('Server error')
-        }
-    });
-
-
-    // Handle form submission
-    router.post('/add', async (req, res) => {
-        try {
-            const { version, type, note } = req.body;
-            if (!version || !type) {
-                return res.status(400).json({ message: 'Version and type are required.' });
-            }
-
-            await PatchNote.create(version, type, note);
-            res.json({ message: 'Patch note added successfully!' });
-        } catch (err) {
-            console.error(err);
-            res.status(500).json({ message: 'Server error' });
         }
     });
 

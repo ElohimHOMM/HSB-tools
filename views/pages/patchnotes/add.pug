@@ -1,53 +1,84 @@
 extends ../../layout
 
 block content
-    h1 Add Patch Note
+  h1 Add/Edit/Delete Patch Notes
 
-    form#add-patchnote-form
-        .row.mb-3
-            .col-md-6
-                label.form-label(for='version') Version
-                input#version.form-control(type='text', list='version-options', placeholder='Select or enter a version', required)
-                datalist#version-options
-                    if versions && versions.length
-                        each v in versions
-                            option(value=v.VERSION)
-            .col-md-6
-                label.form-label(for='typeInput') Type
-                input#type.form-control(type='text' list='type-options' placeholder='Select or create type', required)
-                datalist#type-options
-                    if types && types.length
-                        each t in types
-                            option(value=t.NAME)
-        .row.mb-3
-            .col
-                label.form-label(for='note') Patch Note
-                input#note.form-control(type='text')
-        .row
-            .col-3
-                button.btn.btn-success(type='submit') Add
-    hr
-    .row.mt-3
-        .col
-            table.table.table-dark
-                thead
-                    tr
-                        th(scope="col") #
-                        th(scope="col") Version
-                        th(scope="col") Type
-                        th(scope="col") Patch Note
-                        th(scope="col") Created At
-                        th(scope="col") Updated At
-                tbody
-                    each note in formattedNotes
-                        if note
-                            tr
-                                td(scope="row") #{note.ID}
-                                td #{note.VERSION}
-                                td #{note.TYPE}
-                                td #{note.PATCH_NOTE}
-                                td #{note.CREATED_AT}
-                                td #{note.UPDATED_AT}
+  p Timestamp is off by like 6 hours because of server timezone settings. Will fix later. Or maybe not, who cares.
+
+  form#add-patchnote-form
+    .row.mb-3
+      .col-md-6
+        label.form-label(for='version') Version
+        input#version.form-control(type='text' list='version-options' placeholder='Select or enter a version', required)
+        datalist#version-options
+          if versions && versions.length
+            each v in versions
+              option(value=v.VERSION)
+      .col-md-6
+        label.form-label(for='typeInput') Type
+        input#type.form-control(type='text' list='type-options' placeholder='Select or create type', required)
+        datalist#type-options
+          if types && types.length
+            each t in types
+              option(value=t.NAME)
+    .row.mb-3
+      .col
+        label.form-label(for='note') Patch Note
+        input#note.form-control(type='text')
+    .row
+      .col-3
+        button.btn.btn-success(type='submit') Add
+  hr
+  .row.mt-3
+    .col
+      table.table.table-dark
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") Version
+            th(scope="col") Type
+            th(scope="col") Patch Note
+            th(scope="col") Created At
+            th(scope="col") Updated At
+            th(scope="col") 
+            th(scope="col") 
+        tbody
+          each note in formattedNotes
+            if note
+              tr(data-id=note.ID)
+                td(scope="row") #{note.ID}
+                td
+                  span.version-display #{note.VERSION}
+                  input.version-input.form-control.form-control-sm.d-none(value=note.VERSION)
+                td 
+                  span #{note.TYPE}
+                  input.type-input.form-control.form-control-sm.d-none(value=note.TYPE)
+                td 
+                  span #{note.PATCH_NOTE}
+                  input.note-input.form-control.form-control-sm.d-none(value=note.PATCH_NOTE)
+                td #{note.CREATED_AT}
+                td #{note.UPDATED_AT}
+                td 
+                  button.btn.btn-sm.btn-secondary.bi.bi-pen.edit-patchnote-button(data-id=note.ID)
+                  button.btn.btn-sm.btn-success.bi.bi-floppy2.save-patchnote-button.d-none(data-id=note.ID)
+                td 
+                  button.btn.btn-sm.btn-danger.bi.bi-trash3.delete-patchnote-button(data-id=note.ID)
+                  button.btn.btn-sm.btn-danger.bi.bi-x-lg.cancel-patchnote-button.d-none(data-id=note.ID)
+
+block modals
+  //- Delete Confirmation Modal
+  div#deleteConfirmationModal.modal.fade(tabindex='-1' aria-labelledby='deleteConfirmationLabel' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered
+      .modal-content.bg-dark.text-light
+        .modal-header
+          h5#deleteConfirmationLabel.modal-title Confirm Deletion
+          button.btn-close.btn-close-white(type='button' data-bs-dismiss='modal' aria-label='Close')
+        .modal-body
+          p#deleteModalMessage Are you sure you want to delete this patch note?
+        .modal-footer
+          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
+          button#confirmDeleteBtn.btn.btn-danger(type='button') Delete
+
 
 block scripts
-    script(src='/javascripts/patchnotes/add.js')
+  script(src='/javascripts/patchnotes/add.js')
