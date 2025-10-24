@@ -94,7 +94,7 @@ module.exports = function () {
 
             const avatarUrl = mcUUID
                 ? `https://crafatar.com/avatars/${mcUUID}?size=64`
-                : `/api/minecraft/avatar/${mcUsername}`; // fallback option
+                : `/api/minecraft/avatar/${mcUsername}`;
 
             const id = await MinecraftAccount.create(userId, mcUsername, mcUUID, avatarUrl);
             // TODO: Nicht jedes Mal Session updaten, sondern neues Feld in Minecraft Account Datenbank Tabelle -> Ranking und in der Session ist immer die Nummer 1. Update nur nach Verschieben.

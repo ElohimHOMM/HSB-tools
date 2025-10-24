@@ -53,8 +53,6 @@ module.exports = function () {
                 return res.status(400).json({ message: 'Patch note ID required.' });
             }
 
-            // TODO: Optional: check user permissions here
-
             const result = await PatchNote.deleteById(patchNoteId);
 
             if (result.affectedRows > 0) {
