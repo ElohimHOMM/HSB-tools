@@ -1,9 +1,10 @@
 extends ../../layout
 
 block content
-  h1 Add/Edit/Delete Patch Notes
+  h1 Add Patch Notes
 
   p Timestamp is off by like 6 hours because of server timezone settings. Will fix later. Or maybe not, who cares.
+  p Oh yeah, you can also see the ten most recent Patchnotes here as well. Better edit / delete Page will come later. I think.
 
   form#add-patchnote-form
     .row.mb-3
@@ -34,28 +35,28 @@ block content
       table.table.table-dark
         thead
           tr
-            th(scope="col") #
-            th(scope="col") Version
-            th(scope="col") Type
-            th(scope="col") Patch Note
-            th(scope="col") Created At
-            th(scope="col") Updated At
-            th(scope="col") 
-            th(scope="col") 
+            th.col-1(scope="col") #
+            th.col-1(scope="col") Version
+            th.col-2(scope="col") Type
+            th.col-2(scope="col") Patch Note
+            th.col-2(scope="col") Created At
+            th.col-2(scope="col") Updated At
+            th.col-1(scope="col") 
+            th.col-1(scope="col") 
         tbody
           each note in formattedNotes
             if note
               tr(data-id=note.ID)
                 td(scope="row") #{note.ID}
                 td
-                  span.version-display #{note.VERSION}
-                  input.version-input.form-control.form-control-sm.d-none(value=note.VERSION)
+                  span.version-display.display-field #{note.VERSION}
+                  input.version-input.edit-field.form-control.form-control-sm.d-none(type='text' list='version-options', value=note.VERSION required)
                 td 
-                  span #{note.TYPE}
-                  input.type-input.form-control.form-control-sm.d-none(value=note.TYPE)
+                  span.type-display.display-field #{note.TYPE}
+                  input.type-input.edit-field.form-control.form-control-sm.d-none(type='text' list='type-options', value=note.TYPE required)
                 td 
-                  span #{note.PATCH_NOTE}
-                  input.note-input.form-control.form-control-sm.d-none(value=note.PATCH_NOTE)
+                  span.note-display.display-field #{note.PATCH_NOTE}
+                  input.note-input.edit-field.form-control.form-control-sm.d-none(value=note.PATCH_NOTE)
                 td #{note.CREATED_AT}
                 td #{note.UPDATED_AT}
                 td 
@@ -78,7 +79,6 @@ block modals
         .modal-footer
           button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
           button#confirmDeleteBtn.btn.btn-danger(type='button') Delete
-
 
 block scripts
   script(src='/javascripts/patchnotes/add.js')

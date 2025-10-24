@@ -53,6 +53,7 @@ module.exports = function () {
         email: user.EMAIL || null,
         avatarUrl: avatarUrl
       };
+      req.session.isAdmin = !!user.IS_ADMIN;
 
       res.json({ message: 'Login successful!' })
 

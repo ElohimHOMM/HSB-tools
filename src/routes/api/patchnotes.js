@@ -1,24 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const PatchNote = require('../../models/patchNoteEntity');
+const { requireLogin, requireAdmin } = require('../../middleware/auth');
 
 module.exports = function () {
-    router.post('', async (req, res) => {
+    router.post('', requireLogin, requireAdmin, async (req, res) => {
         try {
             const { version, type, note } = req.body;
             if (!version || !type) {
                 return res.status(400).json({ message: 'Version and type are required.' });
             }
 
-            await PatchNote.create(version, type, note);
-            res.json({ message: 'Patch note added successfully!' });
+            const insertId = await PatchNote.create(version, type, note);
+            res.json({ message: 'Patch note added successfully!', id: insertId });
         } catch (err) {
             console.error(err);
+            if (err.message.includes("A 'Title' already exists")) {
+                return res.status(409).json({ message: err.message });
+            }
             res.status(500).json({ message: 'Server error' });
         }
     });
 
-    router.patch('/:id', async (req, res) => {
+    router.patch('/:id', requireLogin, requireAdmin, async (req, res) => {
         try {
             const patchNoteId = req.params.id;
             const { version, type, note } = req.body;
@@ -41,7 +45,7 @@ module.exports = function () {
     });
 
 
-    router.delete('/:id', async (req, res) => {
+    router.delete('/:id', requireLogin, requireAdmin, async (req, res) => {
         try {
             const patchNoteId = req.params.id;
 

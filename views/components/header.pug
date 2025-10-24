@@ -29,6 +29,9 @@
               a.dropdown-item(href=`/${user.name}/profile`) Profile
             li
               a.dropdown-item(href='/profile/minecraft') Manage Minecraft Account
+            if isAdmin
+              li
+                a.dropdown-item(href='/patchnotes/add') Patchnotes Admin
             li
               hr.dropdown-divider
             li

@@ -19,12 +19,20 @@ const PatchNote = {
     },
 
     async create(version, typeName, note = null) {
-        const typeId = await this.getOrCreateType(typeName);
+        const typeId = await this.getOrCreateType(typeName.trim());
+
+        if (typeName.toLowerCase() === 'title') {
+            const existingRows = await this.getIdByVersionAndTypeId(version, typeId);
+            console.log(existingRows.length + " - " + existingRows);
+            if (existingRows.length > 0) {
+                throw new Error(`A 'Title' already exists for version ${version}.`);
+            }
+        }
 
         const [result] = await pool.query(
             `INSERT INTO PATCH_NOTES (VERSION, TYPE_ID, PATCH_NOTE, CREATED_AT)
        VALUES (?, ?, ?, NOW())`,
-            [version, typeId, note]
+            [version.trim(), typeId, note]
         );
 
         return result.insertId;
@@ -52,7 +60,7 @@ const PatchNote = {
     },
 
     async seedDefaultTypes() {
-        const defaultTypes = ['Fix', 'Added', 'Removed', 'Updated', 'Deprecated'];
+        const defaultTypes = ['Title', 'Fix', 'Added', 'Removed', 'Updated', 'Deprecated'];
         for (const type of defaultTypes) {
             await this.getOrCreateType(type);
         }
@@ -66,6 +74,11 @@ const PatchNote = {
 
     async getAllVersions() {
         const [rows] = await pool.query('SELECT VERSION FROM PATCH_NOTES GROUP BY VERSION ORDER BY MAX(CREATED_AT) DESC');
+        return rows;
+    },
+
+    async getIdByVersionAndTypeId(version, typeId) {
+        const [rows] = await pool.query(`SELECT ID FROM PATCH_NOTES WHERE VERSION = ? AND TYPE_ID = ?`, [version, typeId]);
         return rows;
     },
 

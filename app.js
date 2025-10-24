@@ -17,13 +17,13 @@ const publicPath = path.join(__dirname, 'public')
 app.locals.publicPath = publicPath;
 
 // -- session stuff --
-const MySQLStore = require('express-mysql-session')(session); // <--- important!
+const MySQLStore = require('express-mysql-session')(session);
 
 const sessionStore = new MySQLStore({
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '',
+  password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'hsbtools',
   // optional settings:
   clearExpired: true,
@@ -31,17 +31,25 @@ const sessionStore = new MySQLStore({
   expiration: 1000 * 60 * 60 * 24 * 7 // 1 week
 });
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'change_this_secret',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false } // true if using HTTPS
-}));
+app.use(
+  session({
+    key: 'hsbtools.sid',
+    secret: process.env.SESSION_SECRET || 'your-secret-key',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // true if HTTPS
+      maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    }
+  })
+);
 
 app.use((req, res, next) => {
+  res.locals.isAdmin = req.session.isAdmin === true;
   if (req.session.user) {
     res.locals.user = {
-      id: req.session.user.userId,
+      id: req.session.user.id,
       name: req.session.user.name,
       avatarUrl: req.session.user.avatarUrl || '/images/default_avatar.png'
     };
@@ -106,20 +114,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.use(
-  session({
-    key: 'hsbtools.sid',
-    secret: process.env.SESSION_SECRET || 'your-secret-key',
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: false, // true if HTTPS
-      maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-    }
-  })
-);
 
 var server = http.createServer(app);
 

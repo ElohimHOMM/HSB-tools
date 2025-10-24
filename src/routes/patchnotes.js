@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const PatchNote = require('../models/patchNoteEntity');
+const { requireLogin, requireAdmin } = require('../middleware/auth');
+const { formatDate } = require('../middleware/format');
 
 module.exports = function () {
 
-    router.get('/add', async (req, res) => {
+    router.get('/add', requireLogin, requireAdmin, async (req, res) => {
         try {
             const types = await PatchNote.getTypes();
             const versions = await PatchNote.getAllVersions();
@@ -12,22 +14,8 @@ module.exports = function () {
 
             const formattedNotes = recentPatchNotes.map(note => ({
                 ...note,
-                CREATED_AT: new Date(note.CREATED_AT).toLocaleString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                }),
-                UPDATED_AT: note.UPDATED_AT
-                    ? new Date(note.UPDATED_AT).toLocaleString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    })
-                    : '—'
+                CREATED_AT: formatDate(note.CREATED_AT),
+                UPDATED_AT: note.UPDATED_AT ? formatDate(note.UPDATED_AT) : '—'
             }));
 
             res.render('pages/patchnotes/add', { types, versions, formattedNotes })
