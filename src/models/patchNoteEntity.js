@@ -42,10 +42,11 @@ const PatchNote = {
 
     async getRecentTen() {
         const [rows] = await pool.query(`
-            SELECT ID, VERSION, TYPE_ID, PATCH_NOTE, CREATED_AT, UPDATED_AT
-            FROM PATCH_NOTES
-            ORDER BY CREATED_AT DESC
-            LIMIT 10
+            SELECT pn.ID, pn.VERSION, t.NAME AS TYPE, pn.PATCH_NOTE, pn.CREATED_AT, pn.UPDATED_AT
+        FROM PATCH_NOTES pn
+        JOIN PATCH_NOTE_TYPE t ON pn.TYPE_ID = t.ID
+        ORDER BY pn.CREATED_AT DESC
+        LIMIT 10
         `);
         return rows;
     },
@@ -60,12 +61,12 @@ const PatchNote = {
 
     async getTypes() {
         const [rows] = await pool.query('SELECT ID, NAME FROM PATCH_NOTE_TYPE ORDER BY NAME ASC');
-        return [rows];
+        return rows;
     },
 
     async getAllVersions() {
-        const [rows] = await pool.query('SELECT VERSION FROM PATCH_NOTES ORDER BY CREATED_AT DESC');
-        return [rows];
+        const [rows] = await pool.query('SELECT VERSION FROM PATCH_NOTES GROUP BY VERSION ORDER BY MAX(CREATED_AT) DESC');
+        return rows;
     }
 };
 

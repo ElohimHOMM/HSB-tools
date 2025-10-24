@@ -9,10 +9,9 @@ block content
                 label.form-label(for='version') Version
                 input#version.form-control(type='text', list='version-options', placeholder='Select or enter a version', required)
                 datalist#version-options
-                if versions && versions.length
-                    each v in versions
-                        option(value=v.VERSION)
-
+                    if versions && versions.length
+                        each v in versions
+                            option(value=v.VERSION)
             .col-md-6
                 label.form-label(for='typeInput') Type
                 input#type.form-control(type='text' list='type-options' placeholder='Select or create type', required)
@@ -26,7 +25,7 @@ block content
                 input#note.form-control(type='text')
         .row
             .col-3
-                button.btn.btn-success(type='submit') Add Patch Note
+                button.btn.btn-success(type='submit') Add
     hr
     .row.mt-3
         .col
@@ -40,7 +39,7 @@ block content
                         th(scope="col") Created At
                         th(scope="col") Updated At
                 tbody
-                    each note in recentPatchNotes
+                    each note in formattedNotes
                         if note
                             tr
                                 td(scope="row") #{note.ID}
