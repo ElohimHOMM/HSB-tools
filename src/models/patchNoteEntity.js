@@ -48,19 +48,8 @@ const PatchNote = {
         return rows;
     },
 
-    async getRecentTen() {
-        const [rows] = await pool.query(`
-            SELECT pn.ID, pn.VERSION, t.NAME AS TYPE, pn.PATCH_NOTE, pn.CREATED_AT, pn.UPDATED_AT
-        FROM PATCH_NOTES pn
-        JOIN PATCH_NOTE_TYPE t ON pn.TYPE_ID = t.ID
-        ORDER BY pn.CREATED_AT DESC
-        LIMIT 10
-        `);
-        return rows;
-    },
-
     async seedDefaultTypes() {
-        const defaultTypes = ['Title', 'Fix', 'Added', 'Removed', 'Updated', 'Deprecated'];
+        const defaultTypes = ['Title', 'Subtitle', 'Added', 'Updated', 'Deprecated', 'Removed', 'Fix'];
         for (const type of defaultTypes) {
             await this.getOrCreateType(type);
         }
@@ -94,8 +83,39 @@ const PatchNote = {
             [version, typeId, note, id]
         );
         return result;
-    }
+    },
 
+    async getLatestVersions(limit = 4) {
+        const [rows] = await pool.query(`SELECT pn.ID, pn.VERSION, t.NAME as TYPE, pn.PATCH_NOTE 
+            FROM PATCH_NOTES pn JOIN PATCH_NOTE_TYPE t ON pn.TYPE_ID = t.ID 
+            ORDER BY t.ID DESC, pn.VERSION DESC, FIELD(TYPE, 'title') DESC`);
+
+        const grouped = {};
+        for (const row of rows) {
+            if (!grouped[row.VERSION]) {
+                grouped[row.VERSION] = { version: row.VERSION, title: '', items: [] };
+            }
+            if (row.TYPE === 'Title') {
+                grouped[row.VERSION].title = row.PATCH_NOTE;
+            } else if (row.TYPE === 'Subtitle'){
+                grouped[row.VERSION].subtitle = row.PATCH_NOTE;;
+            } else {
+                grouped[row.VERSION].items.push({ type: row.TYPE, note: row.PATCH_NOTE });
+            }
+        }
+        return Object.values(grouped).slice(0, limit);
+    }, 
+
+    async getRecentTen() {
+        const [rows] = await pool.query(`
+            SELECT pn.ID, pn.VERSION, t.NAME AS TYPE, pn.PATCH_NOTE, pn.CREATED_AT, pn.UPDATED_AT
+            FROM PATCH_NOTES pn
+            JOIN PATCH_NOTE_TYPE t ON pn.TYPE_ID = t.ID
+            ORDER BY pn.CREATED_AT DESC
+            LIMIT 10
+        `);
+        return rows;
+    }
 };
 
 module.exports = PatchNote;

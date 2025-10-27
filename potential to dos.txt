@@ -31,3 +31,6 @@ Add social/Discord buttons with icons from Bootstrap Icons
 
 Add Multiple Minecraft Accounts linked to one HSBT Account. 
 Add "Primary Account" Flag in Minecraft Account
+
+
+Zeitstrahl für PatchNotes?

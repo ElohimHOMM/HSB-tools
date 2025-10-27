@@ -1,0 +1,14 @@
+.modal.fade(id=`modal-patchnotes-${patch.version}` tabindex="-1" aria-labelledby=`modalLabel-patchnotes-${patch.version}` aria-hidden="true")
+  .modal-dialog.modal-lg.modal-dialog-centered
+    .modal-content.bg-dark.text-light
+      .modal-header
+        h5.modal-title(id=`modalLabel-patchnotes-${patch.version}`) Update #{patch.version} - #{patch.title}
+        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+      .modal-body
+        each item in patch.items
+          if item.type != "Title"
+            p
+              strong #{item.type}:
+              |  #{item.note}
+      .modal-footer
+        button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Close

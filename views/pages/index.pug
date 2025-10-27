@@ -31,19 +31,22 @@ block content
       p Looking for motivated collaborators.
       ul.list-group
         li.list-group-item.list-group-item-dark ★ _.intothevoid._
-  .row.mt-5
-    h2.text-center Changelog
-    .col-3
-      .card.border-dark.text-bg-dark
-        h5.card-header Update 0.1.0 - The Barn Update
-        .card-body
-          h5.card-title Initial Version
-          p.card-text Page with 2 Sub Pages
-          button#modal-patchnotes-010-button.btn.btn-secondary(type="button" data-bs-toggle="modal" data-bs-target="#modal-patchnotes-010") Full Patchnotes
+  if latestPatchnotes.length >= 1
+    .row.mt-5
+      h2.text-center Changelog
+      each patch of latestPatchnotes
+        .col-3
+          .card.border-dark.text-bg-dark
+            h5.card-header Update #{patch.version} - #{patch.title}
+            .card-body
+              if patch.items.length
+                p.card-text #{patch.subtitle}
+            button.btn.btn-secondary(type="button" data-bs-toggle="modal" data-bs-target=`#modal-patchnotes-${patch.version}`) Full Patchnotes
   hr
 block modals
   // Modals
-  include ../components/examplePatchNoteModal.pug
+  each patch of latestPatchnotes
+    include ../components/patchNoteModal.pug
 
 block scripts
   script(src="/javascripts/index.js")

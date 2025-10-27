@@ -12,6 +12,8 @@ Currently I only have a self signed Certificate, this will be resolved soon.
 
 [<img alt="Avatars provided by" src="https://img.shields.io/badge/Avatars provided by-Crafatar-%3CCOLOR%3E?style=for-the-badge&color=014C8C">](https://crafatar.com)
 
+[<img alt="Versioning Logic" src="https://img.shields.io/badge/Versioning Logic-Semver-%3CCOLOR%3E?style=for-the-badge&color=F14C8C">](https://semver.org/)
+
 ## Current Features:
 
 - Magic Find Calculator
