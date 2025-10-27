@@ -21,4 +21,4 @@ Currently I only have a self signed Certificate, this will be resolved soon.
 - Enigma Checklist
 - Saving via Profile Logins (Username and Password only)
 - Linking your Hypixel Skyblock profile
-- more soon...
+- For admins: Dynamic Patch Note management via the Front End
