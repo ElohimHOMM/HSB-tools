@@ -22,6 +22,19 @@ block content
             th(scope="col") Obtaining / Requirements
             th(scope="col") Claimed
         tbody#table-container
+        if enigmaJson.length >= 1
+          each enigmaSoul in enigmaJson
+            tr
+              th #{enigmaSoul.id}
+              td #{enigmaSoul.name}
+              td #{enigmaSoul.x}
+              td #{enigmaSoul.y}
+              td #{enigmaSoul.z}
+              td #{enigmaSoul.zone}
+              td #{enigmaSoul.requirements}
+              td
+                .form-check
+                  input.form-check-input.enigma-checkbox(type="checkbox", id="enigma-checkbox-" + enigmaSoul.id, data-id=enigmaSoul.id)
 
 block scripts
   script(src="/javascripts/util/database.js")

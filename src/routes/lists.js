@@ -5,7 +5,8 @@ const path = require('path');
 module.exports = function () {
 
   router.get('/sacks', function (req, res, next) {
-    res.render('pages/lists/sacks', { title: 'Sacks Checklist - HSB Tools' })
+    let enigmaJson = 
+    res.render('pages/lists/sacks', { title: 'Sacks Checklist - HSB Tools', enigmaJson: enigmaJson })
   });
 
   router.get('/enigma', function (req, res, next) {

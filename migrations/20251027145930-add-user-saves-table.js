@@ -27,10 +27,15 @@ exports.up = function (db, callback) {
     DATA: { type: 'text', length: 'long', notNull: true },
     CREATED_AT: { type: 'datetime', notNull: true },
     UPDATED_AT: { type: 'datetime' }
-  },
-    callback
-  );
-}
+  }, addUniqueConstraint);
+
+  
+
+  function addUniqueConstraint(err) {
+    if (err) return callback(err);
+    db.addIndex('USER_SAVES', 'unique_user_page', ['USER_ID', 'PAGE_KEY'], true, callback);
+  }
+};
 
 exports.down = function (db, callback) {
   db.dropTable('USER_SAVES', callback);

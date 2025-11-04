@@ -1,30 +1,39 @@
 const pool = require('../db');
 
 module.exports = {
-  async getByUserId(userId) {
+  async get(userId, pageKey) {
     const [rows] = await pool.query(
-      `SELECT ID, MC_USERNAME, MC_UUID, AVATAR_URL, CREATED_AT
-       FROM MINECRAFT_ACCOUNT
-       WHERE USER_ID = ?`,
+      `SELECT * FROM USER_SAVES WHERE USER_ID = ? AND PAGE_KEY = ?`,
+      [userId, pageKey]
+    );
+    return rows[0] || null;
+  },
+
+  async upsert(userId, pageKey, dataJson) {
+    const now = new Date();
+    const [result] = await pool.query(
+      `INSERT INTO USER_SAVES (USER_ID, PAGE_KEY, DATA, CREATED_AT, UPDATED_AT)
+       VALUES (?, ?, ?, ?, ?)
+       ON DUPLICATE KEY UPDATE
+         DATA = VALUES(DATA),
+         UPDATED_AT = VALUES(UPDATED_AT)`,
+      [userId, pageKey, dataJson, now, now]
+    );
+    return result.insertId;
+  },
+
+  async delete(userId, pageKey) {
+    return pool.query(
+      `DELETE FROM USER_SAVES WHERE USER_ID = ? AND PAGE_KEY = ?`,
+      [userId, pageKey]
+    );
+  },
+
+  async getAllByUser(userId) {
+    const [rows] = await pool.query(
+      `SELECT PAGE_KEY, DATA, UPDATED_AT FROM USER_SAVES WHERE USER_ID = ?`,
       [userId]
     );
     return rows;
-  },
-
-  async getById(accountId) {
-    const [rows] = await pool.query(
-      `SELECT * FROM USER_SAVES WHERE ID = ?`,
-      [accountId]
-    );
-    return rows[0];
-  },
-
-  async delete(userSavesId) {
-    return pool.query(`DELETE FROM USER_SAVES WHERE ID = ?`, [userSavesId]);
-  },
-
-  async getByUUID(mcUUID) {
-    const [rows] = await pool.query(`SELECT * FROM MINECRAFT_ACCOUNT WHERE MC_UUID = ?`, [mcUUID]);
-    return rows[0];
   }
 };
