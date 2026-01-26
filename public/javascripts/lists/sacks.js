@@ -41,6 +41,7 @@ function buildMultiSizeTableRow(map, table) {
 function buildRow() {
     let row = document.createElement("tr");
     let th = document.createElement("th");
+    th.classList.add("text-center");
     th.setAttribute('scope', 'row');
     th.append(document.createTextNode(++rowCounter));
     row.append(th);
@@ -55,6 +56,7 @@ function buildNameTd(name) {
 
 function buildCheckbox(size) {
     let td = document.createElement("td");
+    td.classList.add("text-center");
     let checkbox = document.createElement("input");
     checkbox.classList.add("form-check-input");
     checkbox.setAttribute("type", "checkbox");
