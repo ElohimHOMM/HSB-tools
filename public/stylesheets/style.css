@@ -42,3 +42,7 @@ a {
 .cookie-banner {
   z-index: 1050; /* Ensure it stays above content */
 }
+
+.form-check-input:disabled {
+  cursor: not-allowed;
+}

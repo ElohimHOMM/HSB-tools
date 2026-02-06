@@ -1,7 +1,7 @@
 const express = require('express');
 const { requireLogin } = require('../../middleware/auth');
 
-const UserSaveService = require('../../services/UserSaveService');
+const UserSaveService = require('../../services/save/UserSaveService');
 
 const router = express.Router();
 

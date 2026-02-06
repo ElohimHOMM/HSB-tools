@@ -1,11 +1,11 @@
-const UserSavesEntity = require('../models/userSavesEntity');
+const UserSavesEntity = require('../../models/userSavesEntity');
 
 // Page-specific deserializers
-const EnigmaChecklistService = require('./pages/checklists/EnigmaChecklistService');
+const EnigmaSaveService = require('./EnigmaSaveService');
 // (future) const SacksChecklistService = require('./pages/SacksChecklistService');
 
 const pageServices = {
-  'checklist.enigma': EnigmaChecklistService,
+  'checklist.enigma': EnigmaSaveService,
   // 'checklist.sacks': SacksChecklistService,
 };
 

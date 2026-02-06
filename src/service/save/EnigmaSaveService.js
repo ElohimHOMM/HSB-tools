@@ -9,7 +9,7 @@
  *   }
  * }
  */
-module.exports = class EnigmaChecklistService {
+module.exports = class EnigmaSaveService {
     
   static fromJson(jsonData) {
     try {
