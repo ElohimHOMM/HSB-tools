@@ -14,4 +14,4 @@ $(async function () {
             await saveManager.saveData(data)
         })
     })
-});
+})
