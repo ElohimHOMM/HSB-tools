@@ -68,6 +68,7 @@ var calculatorsRouter = require('./src/routes/calculators')();
 var legalRouter = require('./src/routes/legal')();
 var patchnotesRouter = require('./src/routes/patchnotes')();
 var apiAuthRouter = require('./src/routes/api/auth')();
+var apiDataRouter = require('./src/routes/api/data')();
 var apiMinecraftRouter = require('./src/routes/api/minecraft')();
 var apiPatchnotesRouter = require('./src/routes/api/patchnotes')();
 
@@ -94,6 +95,7 @@ app.use('/calculators', calculatorsRouter);
 app.use('/legal', legalRouter);
 app.use('/patchnotes', patchnotesRouter);
 app.use('/api/auth', apiAuthRouter);
+app.use('/api/data', apiDataRouter);
 app.use('/api/minecraft', apiMinecraftRouter);
 app.use('/api/patchnotes', apiPatchnotesRouter);
 

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const MinecraftAccount = require('../../models/minecraftAccountEntity');
 
-
 module.exports = function () {
 
     router.post('/add', async (req, res) => {

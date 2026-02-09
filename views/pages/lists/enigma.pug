@@ -1,14 +1,12 @@
 extends ../../layout.pug
 
 block content
-  h1.text-center.mt-4 Enigma Souls Checklist
+  h1.text-center Enigma Souls Checklist
   hr
-
-  .row.mt-3
+  .row.mt-4
     .col
       h3 List of all Enigma Souls
-
-  .row.mt-3
+  .row.mt-4
     .col
       table.table.table-dark
         thead
@@ -22,7 +20,19 @@ block content
             th(scope="col") Obtaining / Requirements
             th(scope="col") Claimed
         tbody#table-container
+        if enigmaJson.souls.length >= 1
+          each enigmaSoul in enigmaJson.souls
+            tr
+              th #{enigmaSoul.id}
+              td #{enigmaSoul.name}
+              td #{enigmaSoul.x}
+              td #{enigmaSoul.y}
+              td #{enigmaSoul.z}
+              td #{enigmaSoul.zone}
+              td #{enigmaSoul.requirements}
+              td
+                .form-check
+                  input.form-check-input.enigma-checkbox(type="checkbox", id="enigma-checkbox-" + enigmaSoul.id, data-id=enigmaSoul.id)
 
 block scripts
-  script(src="/javascripts/util/database.js")
   script(src="/javascripts/lists/enigma.js")

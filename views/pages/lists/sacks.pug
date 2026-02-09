@@ -1,28 +1,100 @@
 extends ../../layout.pug
 
 block content
-  h1.text-center.mt-4 Sacks Checklist
+  h1.text-center Sacks Checklist
   hr
-
-  .row.mt-3
+  .row.mt-4
     .col
-      h3 List of all Sacks
-
-  .row.mt-3
+      p Use this checklist to keep track of which sacks you have collected. 
+        | Remember to upgrade your capacity in the Town Hall to be able to 
+        | hold them all eventually! Since Town Hall upgrades take real time,
+        | plan accordingly. Accessories are most likely your priority one.
+        br 
+        | Oh, also keep in mind that the Event Sack consists of Spooky and Winter 
+        | sacks, so if you check off the Event Sack, you probably don't need to
+        | check off Spooky and Winter separately.
+      p When you tick off a Large sack, the Small and Medium checkboxes 
+        | will automatically tick off and disable themselves. Similarly, 
+        | ticking off an Extra Large sack will tick off and disable the Small, 
+        | Medium, and Large checkboxes. The Enchanted checkbox is independent
+        | of the others since it stores different items.
+  .row.mt-4
     .col
       table.table.table-dark
         thead
           tr
-            th(scope="col") #
+            th(scope="col").text-center #
             th(scope="col") Name
-            th(scope="col") Unsized
-            th(scope="col") Small
-            th(scope="col") Medium
-            th(scope="col") Large
-            th(scope="col") Extra Large
-            th(scope="col") Enchanted
+            th(scope="col").text-center Unsized
+            th(scope="col").text-center Small
+            th(scope="col").text-center Medium
+            th(scope="col").text-center Large
+            th(scope="col").text-center Extra Large
+            th(scope="col").text-center Enchanted
         tbody#table-container
+          each sack, index in sacks
+            tr
+              th(scope="row").text-center #{index + 1}
+              td= sack.name
+              // Unsized
+              td.text-center
+                if sack.sizes['Unsized']
+                  input.form-check-input(
+                    type="checkbox",
+                    data-key=`${sack.name}:Unsized`,
+                    data-sack=`${sack.name}`,
+                    data-size="Unsized"
+                  )
+
+              // Small
+              td.text-center
+                if sack.sizes['Small']
+                  input.form-check-input(
+                    type="checkbox",
+                    data-key=`${sack.name}:Small`,
+                    data-sack=`${sack.name}`,
+                    data-size="Small"
+                  )
+
+              // Medium
+              td.text-center
+                if sack.sizes['Medium']
+                  input.form-check-input(
+                    type="checkbox",
+                    data-key=`${sack.name}:Medium`,
+                    data-sack=`${sack.name}`,
+                    data-size="Medium"
+                  )
+
+              // Large
+              td.text-center
+                if sack.sizes['Large']
+                  input.form-check-input(
+                    type="checkbox",
+                    data-key=`${sack.name}:Large`,
+                    data-sack=`${sack.name}`,
+                    data-size="Large"
+                  )
+
+              // Extra Large
+              td.text-center
+                if sack.sizes['Extra Large']
+                  input.form-check-input(
+                    type="checkbox",
+                    data-key=`${sack.name}:Extra Large`,
+                    data-sack=`${sack.name}`,
+                    data-size="Extra Large"
+                  )
+
+              // Enchanted
+              td.text-center
+                if sack.sizes['Enchanted']
+                  input.form-check-input(
+                    type="checkbox",
+                    data-key=`${sack.name}:Enchanted`,
+                    data-sack=`${sack.name}`,
+                    data-size="Enchanted"
+                  )
 
 block scripts
-  script(src="/javascripts/util/database.js")
   script(src="/javascripts/lists/sacks.js")

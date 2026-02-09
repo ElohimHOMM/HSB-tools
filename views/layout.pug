@@ -32,13 +32,23 @@ html
     block modals
     include components/headerModals.pug
 
+    //- Global JS variables for user context
+    if user
+      script.
+        window.HSB_USER_ID = !{JSON.stringify(user.id)};
+        window.HSB_IS_ADMIN = !{JSON.stringify(isAdmin || false)};
+    else
+      script.
+        window.HSB_USER_ID = null;
+        window.HSB_IS_ADMIN = false;
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")
     script(
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz",
       crossorigin="anonymous"
     )
-    script(src="/javascripts/util/toasts.js")
     script(src="/javascripts/auth.js")
+    script(src="/javascripts/util/saveManager.js")
+    script(src="/javascripts/util/toasts.js")
     script(src="/javascripts/layout.js")
     block scripts
