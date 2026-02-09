@@ -4,10 +4,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "migrate:dev": "npx db-migrate up -e dev",
-    "killmigrations:dev": "npx db-migrate reset -e dev",
-    "migrate:prod": "npx db-migrate up -e prod",
-    "postinstall": "npm run migrate:prod"
+    "migrate:dev": "node -r dotenv/config ./node_modules/.bin/db-migrate up -e dev --config ./database.json",
+    "migrate:prod": "node -r dotenv/config ./node_modules/.bin/db-migrate up -e prod --config ./database.json",
+    "reset:dev": "npx db-migrate reset -e dev --config ./database.json"
   },
   "dependencies": {
     "axios": "^1.11.0",

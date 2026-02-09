@@ -177,4 +177,14 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
+if (process.env.NODE_ENV === 'production') {
+  require('child_process').exec(
+    'node ./node_modules/.bin/db-migrate up -e prod --config ./database.json',
+    (err, stdout, stderr) => {
+      if (err) console.error(stderr);
+      else console.log(stdout);
+    }
+  );
+}
+
 module.exports = app;
