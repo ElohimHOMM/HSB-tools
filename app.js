@@ -177,6 +177,7 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
+// Post install migration
 if (process.env.NODE_ENV === 'production') {
   require('child_process').exec(
     'node ./node_modules/.bin/db-migrate up -e prod --config ./database.json',
