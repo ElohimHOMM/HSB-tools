@@ -38,8 +38,8 @@ exports.up = function (db, callback) {
 }
 
 exports.down = function (db, callback) {
+  db.dropTable('PATCH_NOTES', callback);
   db.dropTable('PATCH_NOTE_TYPE', callback);
-  db.dropTable('MINECRAFT_ACCOUNT', callback);
 };
 
 exports.seed = function (db, callback) {

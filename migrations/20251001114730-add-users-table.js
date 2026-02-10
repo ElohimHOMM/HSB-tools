@@ -42,6 +42,7 @@ exports.up = function(db, callback) {
 
 exports.down = function(db, callback) {
   db.dropTable('USER', callback);
+  db.dropTable('MINECRAFT_ACCOUNT', callback);
 };
 
 exports._meta = {
