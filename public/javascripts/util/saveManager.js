@@ -6,12 +6,20 @@ class SaveManager {
   }
 
   async loadData() {
+    const localData = this._loadLocalBackup()
+
     if (this.isLoggedIn) {
       try {
         const res = await fetch(`/api/saves/${this.pageKey}`)
         if (res.ok) {
-          const { data } = await res.json()
-          this.data = data || {}
+          const { data: dbData } = await res.json()
+          const mergedKey = `hsbtools.merged.${this.pageKey}`
+
+          this.data = {...(dbData || {}), ...(localData || {})}
+          if (!localStorage.getItem(mergedKey)) {
+            await this.saveData(this.data)
+            localStorage.setItem(mergedKey, '1')
+          }
           this._saveLocalBackup()
           return this.data
         }
@@ -20,7 +28,7 @@ class SaveManager {
       }
     }
 
-    // fallback: localStorage
+    // fallback: localStorage only
     this.data = this._loadLocalBackup()
     return this.data
   }
@@ -46,7 +54,8 @@ class SaveManager {
       }
     }
 
-    // fallback to localStorage
+    console.log('Falling back to localStorage save')
+    // fallback: localStorage only
     this._saveLocalBackup()
     return false
   }

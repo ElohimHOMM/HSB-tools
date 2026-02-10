@@ -1,5 +1,5 @@
 const pageKey = 'list.enigma'
-let data = []
+let data = {}
 
 $(async function () {
     const saveManager = new SaveManager(pageKey)
@@ -7,10 +7,12 @@ $(async function () {
 
     document.querySelectorAll('.enigma-checkbox').forEach((box) => {
         const id = box.dataset.id
+
+        // restore checked state
         box.checked = !!data[id]
 
         box.addEventListener('change', async () => {
-            data[box.dataset.id] = box.checked
+            data[id] = box.checked
             await saveManager.saveData(data)
         })
     })

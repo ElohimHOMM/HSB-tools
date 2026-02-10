@@ -1,14 +1,3 @@
-/**
- * Handles serialization/deserialization for Enigma Soul checklist saves.
- * The frontend sends an object like:
- * {
- *   "souls": {
- *     "0": true,
- *     "1": false,
- *     "2": true
- *   }
- * }
- */
 module.exports = class EnigmaSaveService {
     
   static fromJson(jsonData) {
